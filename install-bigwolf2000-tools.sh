@@ -14,7 +14,8 @@ read answer
 echo     Ihre Antwort war: $answer
 # if [ "$answer" = "j" ]
 if [ "$answer" != "n" ]
- then chmod +x bigwolf2000-config.sh omv-install-6.x.sh o &&
+ then 
+chmod +x bigwolf2000-config.sh omv-install-6.x.sh &&
 sleep 1
 cp deinstall-bigwolf2000-tools.sh /root/ &&
 sleep 1
