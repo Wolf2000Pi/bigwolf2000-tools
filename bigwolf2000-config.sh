@@ -292,7 +292,6 @@ do_update() {
   apt update &&
   apt list --upgradable -a &&
   apt upgrade &&
-  Y &&
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
