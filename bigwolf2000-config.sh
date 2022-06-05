@@ -280,7 +280,8 @@ do_update() {
 }
 
 do_update_bigwolf2000() {
-  rm -r /root/bigwolf2000-tools/ &&
+  cd /root/
+  rm -r bigwolf2000-tools/ &&
   git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git &&
   cd /root/bigwolf2000-tools &&
   chmod +x bigwolf2000-config.sh omv-install-6.x.sh &&
@@ -292,7 +293,7 @@ do_update_bigwolf2000() {
   exec bigwolf2000-config
 }
 do_finish() {
-#  disable_raspi_config_at_boot
+#	  disable_raspi_config_at_boot
   if [ $ASK_TO_REBOOT -eq 1 ]; then
     whiptail --yesno "Would you like to reboot now?" 20 60 2
     if [ $? -eq 0 ]; then # yes
