@@ -3,6 +3,11 @@
 # Version 1.0
 # by Wolf2000
 
+INTERACTIVE=True
+ASK_TO_REBOOT=0
+BLACKLIST=/etc/modprobe.d/raspi-blacklist.conf
+CONFIG=/boot/config.txt
+
 
 calc_wt_size() {
   # NOTE: it's tempting to redirect stderr to /dev/null, so supress error 
@@ -297,6 +302,7 @@ while true; do
     "5 Openmediavault" "Installation mit Plugins" \
 	"6 Update" "Bigwolf2000-Tools Updaten" \
 	"7 About bigwolf2000-config" "Bitte Lesen" \
+	3>&1 1>&2 2>&3)
 	)
   RET=$?
   if [ $RET -eq 1 ]; then
