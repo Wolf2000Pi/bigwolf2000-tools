@@ -216,10 +216,9 @@ do_internationalisation_menu() {
 }
 
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Banana Pi Software Configuration Tool (Wolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
 	"O1 Openmediavault Version 6"     "Installation Unter Debian bullseye" \
-    "O3 Openmediavault Plugins"       "Nur für OMV" \
-	
+    "O2 Openmediavault Plugins"       "Nur für OMV" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -227,7 +226,7 @@ do_Openmediavault_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
       O1\ *) do_omv6 ;;
-      O3\ *) do_omv_plugins ;;
+      O2\ *) do_omv_plugins ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
