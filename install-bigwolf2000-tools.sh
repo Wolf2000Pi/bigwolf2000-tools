@@ -31,6 +31,6 @@ cd &&
 bigwolf2000-config
 echo
 echo
-echo "   \033[32m Das wars Biwolf2000-Tools\033[0m"
+echo "   \033[32m Das wars Bigwolf2000-Tools\033[0m"
 else echo "   \033[31m Die Installation wurde abgebrochen\033[0m"
 fi 

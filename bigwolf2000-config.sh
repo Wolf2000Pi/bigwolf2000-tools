@@ -249,7 +249,7 @@ do_docker_menu() {
 }
 do_docker_purge() {
   docker system prune -a &&
-  printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
 }  
@@ -283,7 +283,7 @@ do_advanced_menu() {
 do_omv6() {
 #  chmod +x omv-install-6.x.sh
   omv-install-6.x.sh
-  printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
 }
@@ -293,7 +293,7 @@ do_update() {
   apt list --upgradable -a &&
   apt upgrade &&
   Y &&
-  printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
 }
