@@ -222,7 +222,7 @@ do_Openmediavault_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
       O1\ *) do_omv6 ;;
-      O3\ *) do_omv_plugins ;
+      O3\ *) do_omv_plugins ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
