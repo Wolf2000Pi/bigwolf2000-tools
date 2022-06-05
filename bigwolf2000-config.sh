@@ -29,7 +29,9 @@ do_about() {
   whiptail --msgbox "\
 Ich hoffe ihr seid zufrieden?
 Für Schäden übernehme ich Keine Haftung!
-@Wolf2000.\
+@Wolf2000.
+https://github.com/Wolf2000Pi/bigwolf2000-tools
+\
 
 " 20 70 1
 }
@@ -308,14 +310,14 @@ do_finish() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
     "1 Change User Password" "Root Password ändern" \
     "2 Grund-optionen" "Sprache-Zeit-Tastatur " \
     "3 Erweiterte Optionen" "Hostname SSH " \
 	"4 Update System" "Update und upgrade" \
     "5 Openmediavault" "Installation mit Plugins" \
 	"6 Update" "Bigwolf2000-Tools Updaten" \
-	"7 About Bigwolf2000-Config" "Bitte Lesen" \
+	"7 About Bigwolf2000" "Bitte Lesen" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
