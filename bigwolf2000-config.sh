@@ -243,6 +243,7 @@ do_advanced_menu() {
   FUN=$(whiptail --title "Serveri Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
     "A1 Hostname" "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH" "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
+	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
@@ -254,6 +255,7 @@ do_advanced_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+
 do_omv6() {
 #  chmod +x omv-install-6.x.sh
   omv-install-6.x.sh
