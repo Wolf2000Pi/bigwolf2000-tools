@@ -333,6 +333,6 @@ do_finish() {
       reboot
     fi
   fi
-  exit 0
+  exit 1
 }
 
