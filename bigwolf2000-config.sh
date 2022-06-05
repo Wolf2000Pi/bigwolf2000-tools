@@ -250,8 +250,9 @@ do_docker_menu() {
 do_docker_purge() {
   docker system prune -a &&
   printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
-  sleep 10 &&
+  sleep 1 &&
   exec bigwolf2000-config
+}  
 
 do_omv_plugins() {
 echo "deb https://dl.bintray.com/openmediavault-plugin-developers/erasmus jessie main" > /etc/apt/sources.list.d/omv-extras-org.list &&
@@ -355,4 +356,5 @@ while true; do
   else
     exit 1
   fi
-done
+done 
+}
