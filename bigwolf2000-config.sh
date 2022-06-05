@@ -233,7 +233,7 @@ do_Openmediavault_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-do_docker() {
+do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
 	"D1 Docker löschen"     "Alte Img löschen" \
     3>&1 1>&2 2>&3)
@@ -342,7 +342,7 @@ while true; do
     do_finish
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      1\ *) do_docker ;;
+      1\ *) do_docker_menu ;;
 	  2\ *) do_change_pass ;;
       3\ *) do_internationalisation_menu ;;
       4\ *) do_advanced_menu ;;
