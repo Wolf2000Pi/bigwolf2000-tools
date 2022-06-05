@@ -233,8 +233,25 @@ do_Openmediavault_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-
-
+do_docker() {
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+	"D1 Docker löschen"     "Alte Img löschen" \
+    3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      D1\ *) do_docker_purge ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+  fi
+}
+do_docker_purge() {
+  docker system prune -a &&
+  printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
 
 do_omv_plugins() {
 echo "deb https://dl.bintray.com/openmediavault-plugin-developers/erasmus jessie main" > /etc/apt/sources.list.d/omv-extras-org.list &&
@@ -311,26 +328,28 @@ do_finish() {
 calc_wt_size
 while true; do
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
-    "1 Change User Password" "Root Password ändern" \
-    "2 Grund-optionen" "Sprache-Zeit-Tastatur " \
-    "3 Erweiterte Optionen" "Hostname SSH " \
-	"4 Update System" "Update und upgrade" \
-    "5 Openmediavault" "Installation mit Plugins" \
-	"6 Update" "Bigwolf2000-Tools Updaten" \
-	"7 About Bigwolf2000" "Bitte Lesen" \
+    "1 Docker" "Löschen, usw." \
+	"2 Change User Password" "Root Password ändern" \
+    "3 Grund-optionen" "Sprache-Zeit-Tastatur " \
+    "4 Erweiterte Optionen" "Hostname SSH " \
+	"5 Update System" "Update und upgrade" \
+    "6 Openmediavault" "Installation mit Plugins" \
+	"7 Update" "Bigwolf2000-Tools Updaten" \
+	"8 About Bigwolf2000" "Bitte Lesen" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     do_finish
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      1\ *) do_change_pass ;;
-      2\ *) do_internationalisation_menu ;;
-      3\ *) do_advanced_menu ;;
-      4\ *) do_update ;; 	  
-	  5\ *) do_Openmediavault_menu ;;
-	  6\ *) do_update_bigwolf2000 ;;
-	  7\ *) do_about ;;
+      1\ *) do_docker ;;
+	  2\ *) do_change_pass ;;
+      3\ *) do_internationalisation_menu ;;
+      4\ *) do_advanced_menu ;;
+      5\ *) do_update ;; 	  
+	  6\ *) do_Openmediavault_menu ;;
+	  7\ *) do_update_bigwolf2000 ;;
+	  8\ *) do_about ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   else
