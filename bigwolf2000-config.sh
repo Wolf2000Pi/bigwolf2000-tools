@@ -271,7 +271,9 @@ do_omv6() {
 
 do_update() {
   apt update &&
+  apt list --upgradable -a &&
   apt upgrade &&
+  Y &&
   printf "Einen Moment ich starte in 1Sek Wolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
@@ -280,7 +282,7 @@ do_update() {
 do_update_bigwolf2000() {
   rm -r /root/bigwolf2000-tools/ &&
   git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git &&
-  cd /root/wolf2000-tools &&
+  cd /root/bigwolf2000-tools &&
   chmod +x bigwolf2000-config.sh omv-install-6.x.sh &&
   cd /usr/bin/ &&
   rm -r omv-install-6.x.sh bigwolf2000-config &&
@@ -294,7 +296,7 @@ do_update_bigwolf2000() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Banana Pi Software Configuration Tool (Wolf2000-config)" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
     "1 Change User Password" "Root Password ändern" \
     "2 Internationalisierungsoptionen" "Sprache-Zeit-Tastatur " \
     "3 Erweiterte Optionen" "Hostname SSH " \
@@ -322,4 +324,15 @@ while true; do
   fi
 done
 
+do_finish() {
+  disable_raspi_config_at_boot
+  if [ $ASK_TO_REBOOT -eq 1 ]; then
+    whiptail --yesno "Would you like to reboot now?" 20 60 2
+    if [ $? -eq 0 ]; then # yes
+      sync
+      reboot
+    fi
+  fi
+  exit 0
+}
 
