@@ -332,7 +332,6 @@ do_finish() {
       sync
       reboot
     fi
-  fi
-  exit 1
+  exit 0
 }
 
