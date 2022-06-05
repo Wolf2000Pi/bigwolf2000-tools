@@ -203,7 +203,7 @@ do_internationalisation_menu() {
     "I3 Change Keyboard Layout" "Tastatur-Einstellungen" \
     3>&1 1>&2 2>&3)
   RET=$?
-  if [ $RET -eq 1 ]; then
+  if [ $RET -eq 1 ]; then		
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
@@ -310,12 +310,12 @@ calc_wt_size
 while true; do
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
     "1 Change User Password" "Root Password ändern" \
-    "2 Internationalisierungsoptionen" "Sprache-Zeit-Tastatur " \
+    "2 Grund-optionen" "Sprache-Zeit-Tastatur " \
     "3 Erweiterte Optionen" "Hostname SSH " \
 	"4 Update System" "Update und upgrade" \
     "5 Openmediavault" "Installation mit Plugins" \
 	"6 Update" "Bigwolf2000-Tools Updaten" \
-	"7 About bigwolf2000-config" "Bitte Lesen" \
+	"7 About Bigwolf2000-Config" "Bitte Lesen" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
