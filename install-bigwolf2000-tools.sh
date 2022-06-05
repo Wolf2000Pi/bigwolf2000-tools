@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 echo
-echo "   \033[36m Autoinstaller für Wolf2000-Tools\033[0m"
+echo "   \033[36m Autoinstaller für Bigwolf200-Tools\033[0m"
 echo
 echo "   \033[36m Author:     Wolf2000\033[0m"
 echo "   \033[36m Version:         1.0\033[0m"
