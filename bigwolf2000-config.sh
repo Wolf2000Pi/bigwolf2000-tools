@@ -197,7 +197,7 @@ EOF
 
 
 do_internationalisation_menu() {
-  FUN=$(whiptail --title "Banana Pi Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
     "I1 Change Locale" "Wo bist Du zu Hause" \
     "I2 Change Timezone" "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout" "Tastatur-Einstellungen" \
