@@ -303,7 +303,6 @@ while true; do
 	"6 Update" "Bigwolf2000-Tools Updaten" \
 	"7 About bigwolf2000-config" "Bitte Lesen" \
 	3>&1 1>&2 2>&3)
-	)
   RET=$?
   if [ $RET -eq 1 ]; then
     do_finish
