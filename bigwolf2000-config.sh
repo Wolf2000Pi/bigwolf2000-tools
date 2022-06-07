@@ -235,8 +235,8 @@ do_Openmediavault_menu() {
 }
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
-	"D1 Docker löschen"      "Alte Img löschen" \
-    3>&1 1>&2 2>&3)
+ "D1 Docker löschen" "Alte Img löschen" \
+   3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
