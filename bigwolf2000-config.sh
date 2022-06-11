@@ -295,9 +295,10 @@ if
   RET=$?
    [ $RET -eq 0 ]; then
     apt update
-    whiptail --msgbox "omv install" 20 60 1
+	#omv-install-6.x.sh
+    whiptail --msgbox "OMV6 wurde Installiert" 20 60 1
   elif [ $RET -eq 1 ]; then
-    whiptail --msgbox "omv install abgebrocheden" 20 60 1
+    whiptail --msgbox "Die OMV6 Installation wurde abgebrochen" 20 60 1
   else
     return $RET
   fi
