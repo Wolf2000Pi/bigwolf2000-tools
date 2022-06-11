@@ -347,7 +347,7 @@ while true; do
 	"2 Change User Password" "Root Password ändern" \
     "3 Grund-optionen" "Sprache-Zeit-Tastatur " \
     "4 Erweiterte Optionen" "Hostname SSH " \
-	"5 Update System" "Update und upgrade" \
+	"5 System Update" "Update und upgrade" \
     "6 Openmediavault" "Installation mit Plugins" \
 	"7 Update" "Bigwolf2000-Tools Updaten" \
 	"8 About Bigwolf2000" "Bitte Lesen" \
