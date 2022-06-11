@@ -280,14 +280,28 @@ do_advanced_menu() {
   fi
 }
 
-do_omv6() {
+do_omv7() {
 #  chmod +x omv-install-6.x.sh
   omv-install-6.x.sh
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
 }
-
+# test
+do_omv6() {
+if
+  whiptail --yesno "omv installieren" 20 60 2 \
+    --yes-button Enable --no-button Disable
+  RET=$?
+  fi [ $RET -eq 0 ]; then
+    apt update
+    whiptail --msgbox "omv install" 20 60 1
+  elif [ $RET -eq 1 ]; then
+    whiptail --msgbox "omv install abgebrocheden" 20 60 1
+  else
+    return $RET
+  fi
+ } 
 do_update() {
   apt update &&
   apt list --upgradable -a &&
