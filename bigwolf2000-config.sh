@@ -293,7 +293,7 @@ if
   whiptail --yesno "omv installieren" 20 60 2 \
     --yes-button Enable --no-button Disable
   RET=$?
-  fi [ $RET -eq 0 ]; then
+   [ $RET -eq 0 ]; then
     apt update
     whiptail --msgbox "omv install" 20 60 1
   elif [ $RET -eq 1 ]; then
