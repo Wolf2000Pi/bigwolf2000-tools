@@ -291,7 +291,7 @@ do_omv7() {
 do_omv6() {
 if
   whiptail --yesno "omv installieren" 20 60 2 \
-    --yes-button Enable --no-button Disable
+    --yes-button Ja --no-button Nein
   RET=$?
    [ $RET -eq 0 ]; then
     apt update
