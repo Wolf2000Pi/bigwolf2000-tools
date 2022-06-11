@@ -177,7 +177,7 @@ do_apply_os_config() {
 
   if [ -n "$DEBLANGUAGE" ]; then
     printf "Setting language to %s based on os_config.json from NOOBS. May take a while\n" "$DEBLANGUAGE"
-    cat << EOF | debconf-set-selections
+    cat << EOF | debconf-set-elections
 locales   locales/locales_to_be_generated multiselect     $DEBLANGUAGE UTF-8
 EOF
     rm /etc/locale.gen
@@ -199,7 +199,7 @@ EOF
 
 
 do_internationalisation_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
     "I1 Change Locale" "Wo bist Du zu Hause" \
     "I2 Change Timezone" "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout" "Tastatur-Einstellungen" \
@@ -218,7 +218,7 @@ do_internationalisation_menu() {
 }
 
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"O1 Openmediavault Version 6"     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins"       "Nur für OMV" \
     3>&1 1>&2 2>&3)
@@ -234,7 +234,7 @@ do_Openmediavault_menu() {
   fi
 }
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"D1 Docker"           "Alte Img löschen" \
     3>&1 1>&2 2>&3)
   RET=$?
@@ -264,7 +264,7 @@ exec bigwolf2000-config
 }
 
 do_advanced_menu() {
-  FUN=$(whiptail --title "Serveri Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+  FUN=$(whiptail --title "Serveri Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
     "A1 Hostname" "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH" "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
@@ -342,7 +342,7 @@ do_finish() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Select \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker" "Löschen, usw." \
 	"2 Change User Password" "Root Password ändern" \
     "3 Grund-optionen" "Sprache-Zeit-Tastatur " \
