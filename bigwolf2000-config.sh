@@ -290,7 +290,7 @@ do_omv7() {
 # test
 do_omv6() {
 if
-  whiptail --yesno "omv installieren" 20 60 2 \
+  whiptail --yesno "OMV6 Installieren" 20 60 2 \
     --yes-button Ja --no-button Nein
   RET=$?
    [ $RET -eq 0 ]; then
