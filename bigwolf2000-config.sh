@@ -249,8 +249,8 @@ do_docker_menu() {
 }
 do_docker_purge() {
   docker system prune -a &&
-  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
-  sleep 1 &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
   exec bigwolf2000-config
 }  
 
@@ -261,7 +261,7 @@ exec bigwolf2000-config
 }
 
 do_advanced_menu() {
-  FUN=$(whiptail --title "Serveri Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
     "A1 Hostname" "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH" "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
