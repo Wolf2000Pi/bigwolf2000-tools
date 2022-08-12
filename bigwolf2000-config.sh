@@ -236,6 +236,7 @@ do_Openmediavault_menu() {
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"D1 Docker"           "Alte Img löschen" \
+	"D2 CapRover"         "CapRover Installation" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -243,6 +244,7 @@ do_docker_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
       D1\ *) do_docker_purge ;;
+	  D2\ *) CapRover ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -253,7 +255,12 @@ do_docker_purge() {
   sleep 10 &&
   exec bigwolf2000-config
 }  
-
+CapRover() {
+  docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}  
 do_omv_plugins() {
 apt-get update &&
 apt-get --yes --force-yes --allow-unauthenticated install openmediavault-resetperms openmediavault-locate openmediavault-apttool  
