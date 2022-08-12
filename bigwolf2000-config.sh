@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 1.0
+# Version 1.0.1
 # by Wolf2000
 
 INTERACTIVE=True
