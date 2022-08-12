@@ -237,6 +237,7 @@ do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"D1 Docker"           "Alte Img löschen" \
 	"D2 CapRover"         "CapRover Installation" \
+	"D3 Docker ctop"           "Docker-ctop installation" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -245,6 +246,7 @@ do_docker_menu() {
     case "$FUN" in
       D1\ *) do_docker_purge ;;
 	  D2\ *) CapRover ;;
+	  D3\ *) do_docker_ctop ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -257,6 +259,15 @@ do_docker_purge() {
 }  
 CapRover() {
   docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+  do_docker_ctop() {
+  echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list &&
+  wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
+  apt update &&
+  apt install docker-ctop &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
