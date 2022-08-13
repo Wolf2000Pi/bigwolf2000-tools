@@ -219,7 +219,7 @@ do_internationalisation_menu() {
   fi
 }
 do_tasksel() {
-  if tasksel ; then
+  if tasksel; then
     echo 1
   else
     echo 0
