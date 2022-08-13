@@ -220,7 +220,7 @@ do_internationalisation_menu() {
 }
 do_taskel() {
   taskel
-  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n"
+  exit
 }  
  
 do_Openmediavault_menu() {
