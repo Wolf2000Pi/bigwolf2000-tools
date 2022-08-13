@@ -220,7 +220,8 @@ do_internationalisation_menu() {
 }
 do_taskel() {
   taskel
-  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n"
+}  
 #  sleep 1 &&
 #  exec bigwolf2000-config
   }
