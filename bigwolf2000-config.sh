@@ -213,15 +213,16 @@ do_internationalisation_menu() {
       I1\ *) do_change_locale ;;
       I2\ *) do_change_timezone ;;
       I3\ *) do_configure_keyboard ;;
-	  I3\ *) do_taskel ;;
+	  I3\ *) do_tasksel ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-do_taskel() {
-  taskel &&
+do_tasksel() {
+  tasksel &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  exec do_finish
+  sleep 10 &&
+  exec bigwolf2000-config
 }  
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
