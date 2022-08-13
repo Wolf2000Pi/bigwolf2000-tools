@@ -220,8 +220,6 @@ do_internationalisation_menu() {
 }
 do_tasksel() {
   tasksel &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
   exec bigwolf2000-config
 }  
 do_Openmediavault_menu() {
