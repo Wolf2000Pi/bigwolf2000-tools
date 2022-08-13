@@ -218,8 +218,12 @@ do_internationalisation_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-
-
+do_taskel() {
+  taskel &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec do_finish
+}  
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"O1 Openmediavault Version 6"     "Installation Unter Debian bullseye" \
