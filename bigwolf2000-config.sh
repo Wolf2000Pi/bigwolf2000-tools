@@ -220,10 +220,9 @@ do_internationalisation_menu() {
 }
 do_tasksel() {
   if tasksel; then
-    echo 1
-  else
-    echo 0
-  fi 	
+    return 1
+  fi 
+  tasksel
 }  
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
