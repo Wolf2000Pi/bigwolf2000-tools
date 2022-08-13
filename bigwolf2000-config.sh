@@ -221,8 +221,8 @@ do_internationalisation_menu() {
 do_taskel() {
   taskel
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
-  sleep 1 &&
-  exec bigwolf2000-config
+#  sleep 1 &&
+#  exec bigwolf2000-config
   }
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
