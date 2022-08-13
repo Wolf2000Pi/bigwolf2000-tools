@@ -358,7 +358,12 @@ do_finish() {
   fi
   exit 0
 }
-
+do_deinstall
+  deinstall-bigwolf2000-tools.sh &&
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
+  sleep 1 &&
+  exec bigwolf2000-config
+}  
 #
 # Interactive use loop
 #
@@ -373,6 +378,7 @@ while true; do
     "6 Openmediavault" "Installation mit Plugins" \
 	"7 Update" "Bigwolf2000-Tools Updaten" \
 	"8 About Bigwolf2000" "Bitte Lesen" \
+	"9 Bigwolf2000 Tool" "Deinstallieren" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -387,6 +393,7 @@ while true; do
 	  6\ *) do_Openmediavault_menu ;;
 	  7\ *) do_update_bigwolf2000 ;;
 	  8\ *) do_about ;;
+	  9\ *) do_deinstall ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   else
