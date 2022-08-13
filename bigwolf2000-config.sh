@@ -203,6 +203,7 @@ do_internationalisation_menu() {
     "I1 Change Locale" "Wo bist Du zu Hause" \
     "I2 Change Timezone" "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout" "Tastatur-Einstellungen" \
+	"I4 Tasksel" "Werkzeug um Pakete zu installieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then		
@@ -212,11 +213,17 @@ do_internationalisation_menu() {
       I1\ *) do_change_locale ;;
       I2\ *) do_change_timezone ;;
       I3\ *) do_configure_keyboard ;;
+	  I3\ *) do_taskel ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-
+do_taskel() {
+  taskel
+  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
+  sleep 1 &&
+  exec bigwolf2000-config
+  }
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"O1 Openmediavault Version 6"     "Installation Unter Debian bullseye" \
