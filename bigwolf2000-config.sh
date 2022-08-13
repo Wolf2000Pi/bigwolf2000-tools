@@ -358,7 +358,7 @@ do_finish() {
   fi
   exit 0
 }
-do_deinstall
+do_deinstall() {
   ./deinstall-bigwolf2000-tools.sh &&
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
