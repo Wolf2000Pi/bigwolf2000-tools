@@ -225,10 +225,11 @@ do_tasksel() {
   if tasksel; then
     return 1
   fi 
-  sudo tasksel
+  exec bigwolf2000-config
 }
   do_backup() {
-  cd /root/bigwolf2000-tools/
+  cd /root/bigwolf2000-tools/ &&
+  chmod +x backup.sh &&
   ./backup.sh
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
