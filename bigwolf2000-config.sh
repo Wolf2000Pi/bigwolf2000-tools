@@ -220,12 +220,14 @@ do_internationalisation_menu() {
   fi
 }
 do_tasksel() {
+  cd /root/
   if tasksel; then
     return 1
   fi 
   sudo tasksel
 }
   do_backup() {
+  cd /root/bigwolf2000-tools/
   ./backup.sh
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
