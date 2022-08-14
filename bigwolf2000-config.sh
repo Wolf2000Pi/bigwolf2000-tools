@@ -214,7 +214,8 @@ do_internationalisation_menu() {
       I1\ *) do_change_locale ;;
       I2\ *) do_change_timezone ;;
       I3\ *) do_configure_keyboard ;;
-	  I4\ *) do_backup ;;
+	  I4\ *) do_tasksel ;;
+	  I5\ *) do_backup ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
