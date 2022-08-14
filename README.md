@@ -1,8 +1,8 @@
 # Bigwolf2000-tools
 
-Das Bigolf2000-tools ist ein Tool für die wichtigsten Einstellung für den Server.
+Das Bigwolf2000-tools ist ein Tool für die wichtigsten Einstellung für den Server.
 Es gibt auch eine Möglichkeit: 
-Openmediavault zu installieren das bis auf ein bar fragen selbstständig installiert.
+Openmediavault zu installieren das bis auf ein paar fragen selbstständig installiert.
 
 Wenn Git nicht installiert ist. apt install git 
 
