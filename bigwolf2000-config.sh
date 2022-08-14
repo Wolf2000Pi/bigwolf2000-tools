@@ -349,7 +349,7 @@ do_update_bigwolf2000() {
   rm -r bigwolf2000-tools/ &&
   git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git &&
   cd /root/bigwolf2000-tools &&
-  chmod +x bigwolf2000-config.sh omv-install-6.x.sh &&
+  chmod +x bigwolf2000-config.sh omv-install-6.x.sh backup.sh &&
   cd /usr/bin/ &&
   rm -r omv-install-6.x.sh bigwolf2000-config &&
   cp /root/bigwolf2000-tools/bigwolf2000-config.sh /usr/bin/bigwolf2000-config &&
