@@ -10,14 +10,14 @@ calc_wt_size() {
   # NOTE: it's tempting to redirect stderr to /dev/null, so supress error 
   # output from tput. However in this case, tput detects neither stdout or 
   # stderr is a tty and so only gives default 80, 24 values
-  WT_HEIGHT=20
+  WT_HEIGHT=22
   WT_WIDTH=$(tput cols)
 
-  if [ -z "$WT_WIDTH" ] || [ "$WT_WIDTH" -lt 24 ]; then
-    WT_WIDTH=100
+  if [ -z "$WT_WIDTH" ] || [ "$WT_WIDTH" -lt 60 ]; then
+    WT_WIDTH=80
   fi
   if [ "$WT_WIDTH" -gt 178 ]; then
-    WT_WIDTH=160
+    WT_WIDTH=120
   fi
   WT_MENU_HEIGHT=$(($WT_HEIGHT-7))
 }
