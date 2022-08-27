@@ -14,7 +14,7 @@ calc_wt_size() {
   WT_WIDTH=$(tput cols)
 
   if [ -z "$WT_WIDTH" ] || [ "$WT_WIDTH" -lt 80 ]; then
-    WT_WIDTH=100
+    WT_WIDTH=140
   fi
   if [ "$WT_WIDTH" -gt 178 ]; then
     WT_WIDTH=120
