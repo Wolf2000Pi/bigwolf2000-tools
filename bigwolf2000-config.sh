@@ -292,7 +292,7 @@ do_capRover() {
   sleep 10 &&
   exec bigwolf2000-config
 }  
-do_docker_ctop() {
+do_offi_example() {
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") supervisorctl start ds:example &&
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
