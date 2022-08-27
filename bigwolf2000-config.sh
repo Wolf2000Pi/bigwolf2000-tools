@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 1.5.5
+# Version 1.9.5
 # by Wolf2000
 
 
@@ -197,11 +197,11 @@ EOF
 
 do_internationalisation_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-    "I1 Change Locale" "Wo bist Du zu Hause" \
-    "I2 Change Timezone" "Meine Uhr geht nach der Wiener Wasserleitungen" \
-    "I3 Change Keyboard Layout" "Tastatur-Einstellungen" \
-	"I4 Tasksel" "Werkzeug um Pakete zu installieren" \
-	"I5 Backup" "Captain OMV-xml root Docker" \
+    "I1 Change Locale            " "Wo bist Du zu Hause" \
+    "I2 Change Timezone          " "Meine Uhr geht nach der Wiener Wasserleitungen" \
+    "I3 Change Keyboard Layout   " "Tastatur-Einstellungen" \
+	"I4 Tasksel                  " "Werkzeug um Pakete zu installieren" \
+	"I5 Backup                   " "Captain OMV-xml root Docker" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then		
@@ -234,8 +234,8 @@ do_tasksel() {
 }  
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-	"O1 Openmediavault Version 6"     "Installation Unter Debian bullseye" \
-    "O2 Openmediavault Plugins"       "Nur für OMV" \
+	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
+    "O2 Openmediavault Plugins        "     "Nur für OMV" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -250,9 +250,9 @@ do_Openmediavault_menu() {
 }
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-	"D1 Docker                  "           "Alte Img löschen" \
-	"D2 CapRover                "         "CapRover Installation" \
-	"D3 Docker ctop             "           "Docker-ctop installation" \
+	"D1 Docker                  "    "Alte Img löschen" \
+	"D2 CapRover                "    "CapRover Installation" \
+	"D3 Docker ctop             "    "Docker-ctop installation" \
 	"D4 ONLYOFFICE Example      "    "ONLYOFFICE Example reaktivieren" \
     3>&1 1>&2 2>&3)
   RET=$?
@@ -304,8 +304,8 @@ exec bigwolf2000-config
 
 do_advanced_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-    "A1 Hostname" "Setzen Sie den sichtbaren Namen im Netzwerk" \
-    "A2 SSH" "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
+    "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
+    "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
