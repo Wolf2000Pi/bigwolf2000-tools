@@ -388,14 +388,14 @@ calc_wt_size
 while true; do
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 1.5.5" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker" "Löschen, usw." \
-	"2 Change User Password" "Root Password ändern" \
-    "3 Grund-optionen" "Sprache-Zeit-Tastatur " \
-    "4 Erweiterte Optionen" "Hostname SSH " \
-	"5 System Update" "Update und upgrade" \
-    "6 Openmediavault" "Installation mit Plugins" \
-	"7 Update" "Bigwolf2000-Tools Updaten" \
-	"8 About Bigwolf2000" "Bitte Lesen" \
-	"9 Bigwolf2000 Tool" "Deinstallieren" \
+	"2 Change User Password      " "Root Password ändern" \
+    "3 Grund-optionen            " "Sprache-Zeit-Tastatur " \
+    "4 Erweiterte Optionen       " "Hostname SSH " \
+	"5 System Update             " "Update und upgrade" \
+    "6 Openmediavault            " "Installation mit Plugins" \
+	"7 Update                    " "Bigwolf2000-Tools Updaten" \
+	"8 About Bigwolf2000         " "Bitte Lesen" \
+	"9 Bigwolf2000 Tool          " "Deinstallieren" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
