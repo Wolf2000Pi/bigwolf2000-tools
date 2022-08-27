@@ -250,10 +250,10 @@ do_Openmediavault_menu() {
 }
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-	"D1 Docker"           "Alte Img löschen" \
-	"D2 CapRover"         "CapRover Installation" \
-	"D3 Docker ctop"           "Docker-ctop installation" \
-	"D4 ONLYOFFICE Example"    "ONLYOFFICE Example reaktivieren" \
+	"D1 Docker                  "           "Alte Img löschen" \
+	"D2 CapRover                "         "CapRover Installation" \
+	"D3 Docker ctop             "           "Docker-ctop installation" \
+	"D4 ONLYOFFICE Example      "    "ONLYOFFICE Example reaktivieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
