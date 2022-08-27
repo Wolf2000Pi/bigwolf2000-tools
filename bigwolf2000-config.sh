@@ -30,7 +30,7 @@ Für Schäden übernehme ich Keine Haftung!
 https://github.com/Wolf2000Pi/bigwolf2000-tools
 \
 
-" 20 40 1
+" 9 70 1
 }
 
 
