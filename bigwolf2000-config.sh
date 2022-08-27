@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 1.9.5
+# Version 1.9.9
 # by Wolf2000
 
 
@@ -248,6 +248,20 @@ do_Openmediavault_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+do_programme_menu() {
+  FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+	"P1 Prog                  "    "Alte Img löschen" \
+    3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      P1\ *) do_docker_purge ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+  fi
+}
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
 	"D1 Docker                  "    "Alte Img löschen" \
@@ -386,16 +400,17 @@ do_deinstall() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 1.9.5" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 1.9.9" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker                    " "Löschen, usw." \
 	"2 Change User Password      " "Root Password ändern" \
     "3 Grund-optionen            " "Sprache-Zeit-Tastatur Tasksel Backup " \
     "4 Erweiterte Optionen       " "Hostname SSH " \
 	"5 System Update             " "Update und upgrade" \
-    "6 Openmediavault            " "Installation mit Plugins" \
-	"7 Update                    " "Bigwolf2000-Tools Updaten" \
-	"8 About Bigwolf2000         " "Bitte Lesen" \
-	"9 Bigwolf2000 Tool          " "Deinstallieren" \
+    "6 Div.Programme             " "Programme" \
+	"7 Openmediavault            " "Installation mit Plugins" \
+	"8 Update                    " "Bigwolf2000-Tools Updaten" \
+	"9 About Bigwolf2000         " "Bitte Lesen" \
+	"10 Bigwolf2000 Tool         " "Deinstallieren" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -407,10 +422,11 @@ while true; do
       3\ *) do_internationalisation_menu ;;
       4\ *) do_advanced_menu ;;
       5\ *) do_update ;; 	  
-	  6\ *) do_Openmediavault_menu ;;
-	  7\ *) do_update_bigwolf2000 ;;
-	  8\ *) do_about ;;
-	  9\ *) do_deinstall ;;
+	  6\ *) do_programme_menu ;;
+	  7\ *) do_Openmediavault_menu ;;
+	  8\ *) do_update_bigwolf2000 ;;
+	  9\ *) do_about ;;
+	  10\ *) do_deinstall ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   else
