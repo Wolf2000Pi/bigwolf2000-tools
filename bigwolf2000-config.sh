@@ -256,6 +256,7 @@ do_docker_menu() {
 	"D1 Docker"           "Alte Img löschen" \
 	"D2 CapRover"         "CapRover Installation" \
 	"D3 Docker ctop"           "Docker-ctop installation" \
+	"D4 ONLYOFFICE Example"    "ONLYOFFICE Example reaktivieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -263,8 +264,9 @@ do_docker_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
       D1\ *) do_docker_purge ;;
-	  D2\ *) CapRover ;;
+	  D2\ *) do_capRover ;;
 	  D3\ *) do_docker_ctop ;;
+	  D4\ *) do_offi_example ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -275,7 +277,7 @@ do_docker_purge() {
   sleep 10 &&
   exec bigwolf2000-config
 }  
-CapRover() {
+do_capRover() {
   docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
@@ -286,6 +288,13 @@ CapRover() {
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
   apt update &&
   apt install docker-ctop &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}  
+do_docker_ctop() {
+  docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") supervisorctl start ds:example &&
+  docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
