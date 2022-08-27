@@ -19,7 +19,7 @@ calc_wt_size() {
   if [ "$WT_WIDTH" -gt 178 ]; then
     WT_WIDTH=120
   fi
-  WT_MENU_HEIGHT=$(($WT_HEIGHT-11))
+  WT_MENU_HEIGHT=$(($WT_HEIGHT-10))
 }
 
 do_about() {
