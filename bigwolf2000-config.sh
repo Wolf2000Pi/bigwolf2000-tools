@@ -197,11 +197,11 @@ EOF
 
 do_internationalisation_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Wolf2000-config)" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-    "I1 Change Locale            " "Wo bist Du zu Hause" \
-    "I2 Change Timezone          " "Meine Uhr geht nach der Wiener Wasserleitungen" \
-    "I3 Change Keyboard Layout   " "Tastatur-Einstellungen" \
-	"I4 Tasksel                  " "Werkzeug um Pakete zu installieren" \
-	"I5 Backup                   " "Captain OMV-xml root Docker" \
+    "I1 Change Locale               " "Wo bist Du zu Hause" \
+    "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
+    "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
+	"I4 Tasksel                     " "Werkzeug um Pakete zu installieren" \
+	"I5 Backup                      " "Captain OMV-xml root Docker" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then		
