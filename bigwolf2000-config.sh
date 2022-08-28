@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 1.9.9
+# Version 2.0.0
 # by Wolf2000
 
 
@@ -250,17 +250,24 @@ do_Openmediavault_menu() {
 }
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
-	"P1 Prog                  "    "Alte Img löschen" \
+	"P1 Cockpit                  "    "installieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      P1\ *) do_docker_purge ;;
+      P1\ *) do_cockpit ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
+}
+do_cockpit() {
+  apt install cockpit cockpit-bridge cockpit-networkmanager cockpit-packagekit cockpit-pcp cockpit-podman cockpit-sosreport cockpit-storaged cockpit-system cockpit-ws &&
+  systemctl enable --now cockpit.socket &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
 }
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool (Bigwolf2000-config)" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
@@ -400,7 +407,7 @@ do_deinstall() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 1.9.9" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.0.0" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker                    " "Löschen, usw." \
 	"2 Change User Password      " "Root Password ändern" \
     "3 Grund-optionen            " "Sprache-Zeit-Tastatur Tasksel Backup " \
