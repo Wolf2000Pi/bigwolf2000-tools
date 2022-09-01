@@ -387,13 +387,13 @@ do_update_bigwolf2000() {
 }
 do_finish() {
 #	  disable_raspi_config_at_boot
-  if [ $ASK_TO_REBOOT -eq 1 ]; then
-    whiptail --yesno "Would you like to reboot now?" 20 60 2
-    if [ $? -eq 0 ]; then # yes
-      sync
-      reboot
-    fi
-  fi
+#  if [ $ASK_TO_REBOOT -eq 1 ]; then
+#    whiptail --yesno "Would you like to reboot now?" 20 60 2
+#    if [ $? -eq 0 ]; then # yes
+#      sync
+#      reboot
+#    fi
+#  fi
   exit 0
 }
 do_deinstall() {
