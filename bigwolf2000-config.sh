@@ -397,7 +397,8 @@ do_finish() {
   exit 0
 }
 do_deinstall() {
-  ./deinstall-bigwolf2000-tools.sh 
+  ./deinstall-bigwolf2000-tools.sh &&
+   exit 0
 }
 #
 # Interactive use loop
