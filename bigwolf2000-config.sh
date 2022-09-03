@@ -397,10 +397,7 @@ do_finish() {
   exit 0
 }
 do_deinstall() {
-  ./deinstall-bigwolf2000-tools.sh &&
-  printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
-  sleep 1 &&
-  exec bigwolf2000-config
+  ./deinstall-bigwolf2000-tools.sh 
 }
 #
 # Interactive use loop
