@@ -18,7 +18,7 @@ if [ "$answer" != "n" ]
  rm -r deinstall-bigwolf2000-tools.sh &&
  cd /usr/bin/ && 
  rm -r omv-install-6.x.sh  bigwolf2000-config &&
- cd
+ cd /root/
 echo
 echo
 echo "   \033[32m Das wars Bigwolf2000-Tools ist Deinstalliert\033[0m"
