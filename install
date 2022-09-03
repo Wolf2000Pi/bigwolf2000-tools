@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 echo
 echo "   \033[36m Autoinstaller für Bigwolf200-Tools\033[0m"
