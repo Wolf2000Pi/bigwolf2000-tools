@@ -406,7 +406,7 @@ do_deinstall() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 "" $do_version " --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 " --separate-output" do_version " --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker                    " "Löschen, usw." \
 	"2 Change User Password      " "Root Password ändern" \
     "3 Grund-optionen            " "Sprache-Zeit-Tastatur Tasksel Backup " \
