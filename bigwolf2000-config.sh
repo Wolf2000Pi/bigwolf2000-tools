@@ -3,7 +3,7 @@
 # Version 2.0.0
 # by Wolf2000
 
-$vers=Version
+$vers=cat /root/bigwolf2000-tools/Version
 
 
 calc_wt_size() {
