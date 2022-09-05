@@ -197,7 +197,7 @@ EOF
 
 
 do_internationalisation_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
     "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
@@ -234,7 +234,7 @@ do_tasksel() {
   exec bigwolf2000-config
 }  
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins        "     "Nur für OMV" \
     3>&1 1>&2 2>&3)
@@ -250,7 +250,7 @@ do_Openmediavault_menu() {
   fi
 }
 do_programme_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                  "    "installieren" \
     3>&1 1>&2 2>&3)
   RET=$?
@@ -271,7 +271,7 @@ do_cockpit() {
   exec bigwolf2000-config
 }
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"D1 Docker                  "    "Alte Img löschen" \
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
@@ -325,9 +325,10 @@ exec bigwolf2000-config
 }
 
 do_advanced_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurrück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
+	"Hauptmenue         " "Zurück" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -336,6 +337,7 @@ do_advanced_menu() {
     case "$FUN" in
       A1\ *) do_change_hostname ;;
       A2\ *) do_ssh ;;
+	  A3\ *) cancel ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
