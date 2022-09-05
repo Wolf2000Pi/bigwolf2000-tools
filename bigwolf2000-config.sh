@@ -328,7 +328,6 @@ do_advanced_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
-	"A3 Hauptmenue         " "Zurück" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -337,15 +336,10 @@ do_advanced_menu() {
     case "$FUN" in
       A1\ *) do_change_hostname ;;
       A2\ *) do_ssh ;;
-	  A3\ *) do_zurück ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-
-do_zurück () {
-   while true; do
-}   
 do_omv7() {
 #  chmod +x omv-install-6.x.sh
   omv-install-6.x.sh
