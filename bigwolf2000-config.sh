@@ -337,12 +337,16 @@ do_advanced_menu() {
     case "$FUN" in
       A1\ *) do_change_hostname ;;
       A2\ *) do_ssh ;;
-	  A3\ *) cancel ;;
+	  A3\ *) do_zurück ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
 
+do_zurück () {
+  cancel
+   exit 0
+   
 do_omv7() {
 #  chmod +x omv-install-6.x.sh
   omv-install-6.x.sh
