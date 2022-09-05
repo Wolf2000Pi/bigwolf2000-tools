@@ -271,7 +271,7 @@ do_cockpit() {
   exec bigwolf2000-config
 }
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
 	"D1 Docker                  "    "Alte Img löschen" \
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
