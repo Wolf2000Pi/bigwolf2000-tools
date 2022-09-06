@@ -229,7 +229,7 @@ do_tasksel() {
 }
 do_crontab() {
   cd /root/
-  if tasksel; then
+  if crontab -e; then
     return 1
   fi 
   exec bigwolf2000-config
