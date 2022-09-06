@@ -228,11 +228,11 @@ do_tasksel() {
   exec bigwolf2000-config
 }
 do_crontab() {
-  cd /root/
+  cd /root/ &&
+  exit 0 &&
   if crontab -e; then
     return 1
   fi 
-  exit 0
 }
   do_backup() {
   cd /root/bigwolf2000-tools/ &&
