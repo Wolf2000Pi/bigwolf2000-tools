@@ -203,6 +203,7 @@ do_internationalisation_menu() {
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
 	"I4 Tasksel                     " "Werkzeug um Pakete zu installieren" \
 	"I5 Backup                      " "Captain OMV-xml root Docker" \
+	"I6 Crontab                     " "Crontab" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then		
@@ -214,11 +215,19 @@ do_internationalisation_menu() {
       I3\ *) do_configure_keyboard ;;
 	  I4\ *) do_tasksel ;;
 	  I5\ *) do_backup ;;
+	  I6\ *) do_crontab ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
 do_tasksel() {
+  cd /root/
+  if tasksel; then
+    return 1
+  fi 
+  exec bigwolf2000-config
+}
+do_crontab() {
   cd /root/
   if tasksel; then
     return 1
