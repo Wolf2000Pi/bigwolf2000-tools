@@ -260,6 +260,7 @@ do_Openmediavault_menu() {
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                  "    "installieren" \
+	"P2 Net-Tools                  "    "installieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -267,6 +268,7 @@ do_programme_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
       P1\ *) do_cockpit ;;
+	  P2\ *) do_net_tools ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -274,6 +276,12 @@ do_programme_menu() {
 do_cockpit() {
   apt install cockpit cockpit-bridge cockpit-networkmanager cockpit-packagekit cockpit-pcp cockpit-podman cockpit-sosreport cockpit-storaged cockpit-system cockpit-ws &&
   systemctl enable --now cockpit.socket &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_net_tools() {
+  apt install net-tools
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
