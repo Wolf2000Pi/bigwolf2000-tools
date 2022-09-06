@@ -232,8 +232,7 @@ do_crontab() {
   if crontab -e; then
     return 1
   fi 
-  exit 0 &&
-  exec bigwolf2000-config
+  exit 0
 }
   do_backup() {
   cd /root/bigwolf2000-tools/ &&
