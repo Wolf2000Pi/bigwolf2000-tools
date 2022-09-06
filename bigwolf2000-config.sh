@@ -230,7 +230,7 @@ do_tasksel() {
 do_crontab() {
   cd /root/ &&
   if crontab -e; then
-    return 1
+    return 0
   fi 
 }
   do_backup() {
