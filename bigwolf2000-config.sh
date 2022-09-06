@@ -196,8 +196,8 @@ EOF
 }
 
 
-do_internationalisation_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+do_Grund_optionen_menu() {
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
     "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
@@ -432,7 +432,7 @@ while true; do
     case "$FUN" in
       1\ *) do_docker_menu ;;
 	  2\ *) do_change_pass ;;
-      3\ *) do_internationalisation_menu ;;
+      3\ *) do_Grund_optionen_menu ;;
       4\ *) do_advanced_menu ;;
       5\ *) do_update ;; 	  
 	  6\ *) do_programme_menu ;;
