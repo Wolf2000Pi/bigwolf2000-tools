@@ -229,7 +229,6 @@ do_tasksel() {
 }
 do_crontab() {
   cd /root/ &&
-  exit 0 &&
   if crontab -e; then
     return 1
   fi 
