@@ -9,6 +9,7 @@ Abhängigkeiten: ``` apt install wget git whiptail ```
 The Bigwolf2000-tools is a tool for the most important settings for the server.
 There is also a possibility:
 to install Openmediavault, which installs itself except for a few questions.
+
 Dependencies: ``` apt install wget git whiptail```
 
 ```
