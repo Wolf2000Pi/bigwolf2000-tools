@@ -12,6 +12,8 @@ to install Openmediavault, which installs itself except for a few questions.
 If Git is not installed: apt install git
 
 cd && git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git && cd bigwolf2000-tools && chmod +x install-bigwolf2000-tools.sh && ./install-bigwolf2000-tools.sh
+or
+wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
 
 ![tool1](https://user-images.githubusercontent.com/17816568/188281200-8337102b-3a96-400e-9cec-7989e609445f.JPG)
 
