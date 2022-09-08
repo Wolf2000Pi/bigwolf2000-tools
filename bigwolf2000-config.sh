@@ -235,7 +235,7 @@ do_crontab() {
     return 0
   fi 
 }
-do_do_drop_caches() {
+do_drop_caches() {
   cd /root/ &&
   if sync; echo 3 > /proc/sys/vm/drop_caches; then
     return 0
