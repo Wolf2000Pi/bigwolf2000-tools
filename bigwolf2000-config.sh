@@ -237,9 +237,8 @@ do_crontab() {
 }
 do_drop_caches() {
   cd /root/ &&
-  if sync; echo 3 > /proc/sys/vm/drop_caches; then
-    return 0
-  fi 
+  sync; echo 3 > /proc/sys/vm/drop_caches; then
+  exec bigwolf2000-config  
 }
   do_backup() {
   cd /root/bigwolf2000-tools/ &&
