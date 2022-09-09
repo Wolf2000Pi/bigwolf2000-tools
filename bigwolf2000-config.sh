@@ -268,7 +268,7 @@ do_Openmediavault_menu() {
 }
 do_omv_firstaid() {
   cd /root/
-  if omv_firstaid; then
+  if omv-firstaid; then
     return 1
   fi 
   exec bigwolf2000-config
