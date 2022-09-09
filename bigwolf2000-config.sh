@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 2.0.0
+# Version 2.1.4
 # by Wolf2000
 do_version() {
 cat /root/bigwolf2000-tools/Version
@@ -197,7 +197,7 @@ EOF
 
 
 do_Grund_optionen_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
     "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
@@ -249,7 +249,7 @@ do_drop_caches() {
   exec bigwolf2000-config
 }  
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins        "     "Nur für OMV" \
 	"O3 omv-firstaid                  "     "Config-Tool für OMV" \
@@ -273,7 +273,7 @@ do_omv_firstaid() {
   fi 
 }
 do_programme_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                    "    "installieren" \
 	"P2 Net-Tools                  "    "installieren" \
     3>&1 1>&2 2>&3)
@@ -302,7 +302,7 @@ do_net_tools() {
   exec bigwolf2000-config
 }
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
 	"D1 Docker                  "    "Alte Img löschen" \
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
@@ -356,7 +356,7 @@ exec bigwolf2000-config
 }
 
 do_advanced_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
@@ -436,7 +436,7 @@ do_deinstall() {
 #
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker                    " "Löschen, usw." \
 	"2 Change User Password      " "Root Password ändern" \
     "3 Grund-optionen            " "Sprache-Zeit-Tastatur Tasksel Backup " \
