@@ -269,9 +269,8 @@ do_Openmediavault_menu() {
 do_omv_firstaid() {
   cd /root/
   if omv-firstaid; then
-    return 1
+    return 0
   fi 
-  exec bigwolf2000-config
 }
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
