@@ -252,6 +252,7 @@ do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins        "     "Nur für OMV" \
+	"O3 omv-firstaid                  "     "Config-Tool für OMV" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -260,13 +261,21 @@ do_Openmediavault_menu() {
     case "$FUN" in
       O1\ *) do_omv6 ;;
       O2\ *) do_omv_plugins ;;
+	  O3\ *) do_omv_firstaid ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+do_omv_firstaid() {
+  cd /root/
+  if omv_firstaid; then
+    return 1
+  fi 
+  exec bigwolf2000-config
+}
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
-	"P1 Cockpit                  "    "installieren" \
+	"P1 Cockpit                    "    "installieren" \
 	"P2 Net-Tools                  "    "installieren" \
     3>&1 1>&2 2>&3)
   RET=$?
