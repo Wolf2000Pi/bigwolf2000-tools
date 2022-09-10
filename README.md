@@ -20,6 +20,12 @@ or
 wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
 ```
 
+Bei Debian Net Installer ---- At Debian NetInstaller
+
+```
+apt install wget git whiptail && wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
+```
+
 ![tool1](https://user-images.githubusercontent.com/17816568/188281200-8337102b-3a96-400e-9cec-7989e609445f.JPG)
 
 ![tool2](https://user-images.githubusercontent.com/17816568/188281411-edc64f9c-e172-49a6-9c0f-ab2812dbef89.JPG)
