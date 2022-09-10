@@ -289,6 +289,9 @@ do_programme_menu() {
   fi
 }
 do_cockpit() {
+  echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list &&
+  echo "deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list &&
+  apt update &&
   apt install cockpit cockpit-bridge cockpit-networkmanager cockpit-packagekit cockpit-pcp cockpit-podman cockpit-sosreport cockpit-storaged cockpit-system cockpit-ws &&
   systemctl enable --now cockpit.socket &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
