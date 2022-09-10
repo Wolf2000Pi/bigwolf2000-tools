@@ -446,7 +446,7 @@ while true; do
 	"8 Update                    " "Bigwolf2000-Tools Updaten" \
 	"9 About Bigwolf2000         " "Bitte Lesen" \
 	"10 Bigwolf2000 Tool         " "Deinstallieren" \
-	"11 Reboot                   " "Reboot System
+	"11 Reboot                   " "Reboot System" \
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
