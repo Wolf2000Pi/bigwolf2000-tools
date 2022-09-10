@@ -48,7 +48,8 @@ apt-get update
 echo
 echo
 echo -e "\033[32m Das wars Openmediavult und Extras.org ist jetzt Installiert\033[0m"
-else echo -e "\033[31m Die Installation wurde abgebrochen\033[0m"
+echo -e "\033[31m Die Installation wurde abgebrochen\033[0m"
+else
 fi
 
 
