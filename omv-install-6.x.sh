@@ -17,7 +17,7 @@ if [ "$answer" != "n" ]
 apt-get install --yes gnupg &&
 wget -O "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" https://packages.openmediavault.org/public/archive.key &&
 apt-key add "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" &&
-if
+
 cat <<EOF >> /etc/apt/sources.list.d/openmediavault.list
 deb https://packages.openmediavault.org/public shaitan main
 # deb https://downloads.sourceforge.net/project/openmediavault/packages shaitan main
@@ -29,7 +29,6 @@ deb https://packages.openmediavault.org/public shaitan main
 # deb https://packages.openmediavault.org/public shaitan partner
 # deb https://downloads.sourceforge.net/project/openmediavault/packages shaitan partner
 EOF
-fi
 export LANG=C.UTF-8 &&
 export DEBIAN_FRONTEND=noninteractive &&
 export APT_LISTCHANGES_FRONTEND=none &&
