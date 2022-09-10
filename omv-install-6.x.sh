@@ -14,6 +14,7 @@ read answer
 echo  Ihre Antwort war: $answer
 # if [ "$answer" = "j" ]
 if [ "$answer" != "n" ]
+then
 apt-get install --yes gnupg &&
 wget -O "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" https://packages.openmediavault.org/public/archive.key &&
 apt-key add "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" &&
@@ -44,12 +45,12 @@ apt-get update &&
 sleep 1
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&
 sleep 1
-apt-get update
+apt-get update &&
+bigwolf2000-config
 echo
 echo
 echo -e "\033[32m Das wars Openmediavult und Extras.org ist jetzt Installiert\033[0m"
-echo -e "\033[31m Die Installation wurde abgebrochen\033[0m"
-else
+else echo -e "\033[31m Die Installation wurde abgebrochen\033[0m"
 fi
 
 
