@@ -17,7 +17,7 @@ Dependencies:
 ``` 
 apt install wget git whiptail
 ```
-Install:
+Installation:
 ```
 cd && git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git && cd bigwolf2000-tools && chmod +x install-bigwolf2000-tools.sh && ./install-bigwolf2000-tools.sh
 ```
