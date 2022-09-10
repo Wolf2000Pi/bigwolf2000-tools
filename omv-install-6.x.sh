@@ -1,20 +1,5 @@
 #!/bin/bash 
 
-echo
-echo -e "\033[36m Autoinstaller für Openmediavault 6.x und Extras.org\033[0m"
-echo
-echo -e "\033[36m Author:     Wolf2000\033[0m"
-echo -e "\033[36m Version:         1.0\033[0m"
-echo -e "\033[36m https://wolf2000.at\033[0m"
-echo
-echo -e "\033[32m Wollen sie Openmediaut mit Plugins installieren\033[0m"
-echo -e "\033[32m Ihre Antwort, n/j:\033[0m"
-read answer
-#echo Das installieren wurde abgebrochen
-echo  Ihre Antwort war: $answer
-# if [ "$answer" = "j" ]
-if [ "$answer" != "n" ]
-then
 apt-get install --yes gnupg &&
 wget -O "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" https://packages.openmediavault.org/public/archive.key &&
 apt-key add "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" &&
@@ -44,15 +29,6 @@ omv-confdbadm populate &&
 apt-get update &&
 sleep 1
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&
-sleep 1
-apt-get update &&
+sleep 10
 reboot &&
 bigwolf2000-config
-echo
-echo
-echo -e "\033[32m Das wars Openmediavult und Extras.org ist jetzt Installiert\033[0m"
-else echo -e "\033[31m Die Installation wurde abgebrochen\033[0m"
-fi
-
-
-

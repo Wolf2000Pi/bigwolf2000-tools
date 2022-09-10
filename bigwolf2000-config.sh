@@ -251,7 +251,7 @@ do_drop_caches() {
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
-    "O2 Openmediavault Plugins        "     "Nur für OMV" \
+    "O2 Openmediavault Plugins        "     "OMV-Extras" \
 	"O3 omv-firstaid                  "     "Config-Tool für OMV" \
     3>&1 1>&2 2>&3)
   RET=$?
@@ -266,11 +266,32 @@ do_Openmediavault_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+# test
+do_omv6() {
+if
+  whiptail --yesno "OMV6 Installieren" 20 60 2 \
+    --yes-button Ja --no-button Nein
+  RET=$?
+   [ $RET -eq 0 ]; then
+    apt update &&
+	omv-install-6.x.sh
+    whiptail --msgbox "OMV6 wurde Installiert" 20 60 1
+  elif [ $RET -eq 1 ]; then
+    whiptail --msgbox "Die OMV6 Installation wurde abgebrochen" 20 60 1
+  else
+    return $RET
+  fi
+ } 
 do_omv_firstaid() {
   cd /root/
   if omv-firstaid; then	
     return 0
   fi 
+}
+do_omv_plugins() {
+apt-get update &&
+wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&  
+exec bigwolf2000-config
 }
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
@@ -352,11 +373,6 @@ do_offi_example() {
   sleep 10 &&
   exec bigwolf2000-config
 }  
-do_omv_plugins() {
-apt-get update &&
-apt-get --yes --force-yes --allow-unauthenticated install openmediavault-resetperms openmediavault-locate openmediavault-apttool  
-exec bigwolf2000-config
-}
 
 do_advanced_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.1.4" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
@@ -380,22 +396,7 @@ do_reboot() {
   sleep 1 &&
   exec bigwolf2000-config
 }
-# test
-do_omv6() {
-if
-  whiptail --yesno "OMV6 Installieren" 20 60 2 \
-    --yes-button Ja --no-button Nein
-  RET=$?
-   [ $RET -eq 0 ]; then
-    apt update &&
-	omv-install-6.x.sh
-    whiptail --msgbox "OMV6 wurde Installiert" 20 60 1
-  elif [ $RET -eq 1 ]; then
-    whiptail --msgbox "Die OMV6 Installation wurde abgebrochen" 20 60 1
-  else
-    return $RET
-  fi
- } 
+
 do_update() {
   apt update &&
   apt list --upgradable -a &&
