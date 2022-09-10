@@ -14,19 +14,37 @@ read answer
 echo  Ihre Antwort war: $answer
 # if [ "$answer" = "j" ]
 if [ "$answer" != "n" ]
+apt-get install --yes gnupg &&
+wget -O "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" https://packages.openmediavault.org/public/archive.key &&
+apt-key add "/etc/apt/trusted.gpg.d/openmediavault-archive-keyring.asc" &&
+if
+cat <<EOF >> /etc/apt/sources.list.d/openmediavault.list
+deb https://packages.openmediavault.org/public shaitan main
+# deb https://downloads.sourceforge.net/project/openmediavault/packages shaitan main
+## Uncomment the following line to add software from the proposed repository.
+# deb https://packages.openmediavault.org/public shaitan-proposed main
+# deb https://downloads.sourceforge.net/project/openmediavault/packages shaitan-proposed main
+## This software is not part of OpenMediaVault, but is offered by third-party
+## developers as a service to OpenMediaVault users.
+# deb https://packages.openmediavault.org/public shaitan partner
+# deb https://downloads.sourceforge.net/project/openmediavault/packages shaitan partner
+EOF
+fi
+export LANG=C.UTF-8 &&
+export DEBIAN_FRONTEND=noninteractive &&
+export APT_LISTCHANGES_FRONTEND=none &&
+apt-get update &&
+apt-get --yes --auto-remove --show-upgraded \
+    --allow-downgrades --allow-change-held-packages \
+    --no-install-recommends \
+    --option DPkg::Options::="--force-confdef" \
+    --option DPkg::Options::="--force-confold" \
+    install openmediavault-keyring openmediavault &&
+omv-confdbadm populate &&
 apt-get update &&
 sleep 1
-wget -O - https://github.com/OpenMediaVa…Script/raw/master/install | sudo bash &&
+wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&
 sleep 1
-apt-get update &&
-sleep 1
-apt-get --yes --force-yes --allow-unauthenticated install openmediavault php-apc &&
-sleep 1
-wget https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install
-chmod +x install
-sudo ./install -n &&
-sleep 1
-
 apt-get update
 echo
 echo
