@@ -268,7 +268,7 @@ do_Openmediavault_menu() {
 }
 do_omv_firstaid() {
   cd /root/
-  if omv-firstaid; then
+  if omv-firstaid; then	
     return 0
   fi 
 }
@@ -371,9 +371,8 @@ do_advanced_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-do_omv7() {
-#  chmod +x omv-install-6.x.sh
-  omv-install-6.x.sh
+do_reboot() {
+  reboot
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
@@ -447,6 +446,7 @@ while true; do
 	"8 Update                    " "Bigwolf2000-Tools Updaten" \
 	"9 About Bigwolf2000         " "Bitte Lesen" \
 	"10 Bigwolf2000 Tool         " "Deinstallieren" \
+	"11 Reboot                   " "Reboot System
 	3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -463,6 +463,7 @@ while true; do
 	  8\ *) do_update_bigwolf2000 ;;
 	  9\ *) do_about ;;
 	  10\ *) do_deinstall ;;
+	  11\ *) do_reboot ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   else
