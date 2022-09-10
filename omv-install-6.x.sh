@@ -30,5 +30,5 @@ apt-get update &&
 sleep 1
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&
 sleep 10
-reboot &&
+/sbin/reboot &&
 bigwolf2000-config

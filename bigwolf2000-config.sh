@@ -391,7 +391,7 @@ do_advanced_menu() {
   fi
 }
 do_reboot() {
-  reboot
+  /sbin/reboot
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
