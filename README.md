@@ -31,6 +31,15 @@ Bei Debian Net Installer ---- At Debian NetInstaller
 ```
 apt install wget git whiptail && wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
 ```
+Für weiter fragen zur Openmediavault: https://forum.openmediavault.org
+
+For further questions about Openmediavault: https://forum.openmediavault.org
+
+Für Caprover muss der Port 80, 443, 3000 freigeschalten sein. Beim ersten login ist das Password captain42 . 
+Für weitere Information : https://caprover.com/docs/get-started.html
+
+Port 80, 443, 3000 must be enabled for Caprover. At the first login the password is captain42 .
+For more information: https://caprover.com/docs/get-started.html
 
 ![tool1](https://user-images.githubusercontent.com/17816568/188281200-8337102b-3a96-400e-9cec-7989e609445f.JPG)
 
