@@ -4,14 +4,20 @@ Das Bigwolf2000-tools ist ein Tool für die wichtigsten Einstellung für den Ser
 Es gibt auch eine Möglichkeit: 
 Openmediavault zu installieren das bis auf ein paar fragen selbstständig installiert.
 
-Abhängigkeiten: ``` apt install wget git whiptail ```
+Abhängigkeiten: 
+``` 
+apt install wget git whiptail
+```
 
 The Bigwolf2000-tools is a tool for the most important settings for the server.
 There is also a possibility:
 to install Openmediavault, which installs itself except for a few questions.
 
-Dependencies: ``` apt install wget git whiptail```
-
+Dependencies: 
+``` 
+apt install wget git whiptail
+```
+Installation:
 ```
 cd && git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git && cd bigwolf2000-tools && chmod +x install-bigwolf2000-tools.sh && ./install-bigwolf2000-tools.sh
 ```
@@ -19,6 +25,21 @@ or
 ```
 wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
 ```
+
+Bei Debian Net Installer ---- At Debian NetInstaller
+
+```
+apt install wget git whiptail && wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
+```
+Für weiter fragen zur Openmediavault: https://forum.openmediavault.org
+
+For further questions about Openmediavault: https://forum.openmediavault.org
+
+Für Caprover muss der Port 80, 443, 3000 freigeschalten sein. Beim ersten login ist das Password captain42 . 
+Für weitere Information : https://caprover.com/docs/get-started.html
+
+Port 80, 443, 3000 must be enabled for Caprover. At the first login the password is captain42 .
+For more information: https://caprover.com/docs/get-started.html
 
 ![tool1](https://user-images.githubusercontent.com/17816568/188281200-8337102b-3a96-400e-9cec-7989e609445f.JPG)
 
