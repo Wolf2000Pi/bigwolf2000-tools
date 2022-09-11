@@ -297,7 +297,8 @@ do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                    "    "installieren" \
 	"P2 Net-Tools                  "    "installieren" \
-    3>&1 1>&2 2>&3)
+	"P3 lm-sensors                 "    "installieren" \
+    3>&1 1>&2 2>&P2\ *) do_net_tools ;;3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
@@ -305,6 +306,7 @@ do_programme_menu() {
     case "$FUN" in
       P1\ *) do_cockpit ;;
 	  P2\ *) do_net_tools ;;
+	  P2\ *) do_lm_sensors ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -321,6 +323,13 @@ do_cockpit() {
 }
 do_net_tools() {
   apt install net-tools
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_lm_sensors() {
+  apt install lm-sensors &&
+  sensors-detect
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
