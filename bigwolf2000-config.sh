@@ -298,7 +298,7 @@ do_programme_menu() {
 	"P1 Cockpit                    "    "installieren" \
 	"P2 Net-Tools                  "    "installieren" \
 	"P3 lm-sensors                 "    "installieren" \
-    3>&1 1>&2 2>&P2\ *) do_net_tools ;;3)
+    3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
