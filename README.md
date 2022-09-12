@@ -26,14 +26,14 @@ or
 wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
 ```
 
-Sollte das Tool nicht mehr funktionieren oder fehlermeldungen haben füren sie ./deinstall-bigwolf2000-tools.sh aus und installieren sie es neu
+Sollte das Tool nicht mehr funktionieren oder fehlermeldungen haben füren sie ./deinstall-bigwolf2000-tools.sh aus und installieren sie es neu.
 
-If the tool stops working or you get error messages, please select ./deinstall-bigwolf2000-tools.sh and reinstall it
+If the tool stops working or you get error messages, please select ./deinstall-bigwolf2000-tools.sh and reinstall it.
 ```
 ./deinstall-bigwolf2000-tools.sh
 ```
 
-Bei Debian Net Installer ---- At Debian NetInstaller
+Bei Debian Net Installer ---- At Debian NetInstaller.
 
 ```
 apt install wget git whiptail && wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
