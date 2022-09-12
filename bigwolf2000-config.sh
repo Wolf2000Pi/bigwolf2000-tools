@@ -324,20 +324,20 @@ do_cockpit() {
   exec bigwolf2000-config
 }
 do_net_tools() {
-  apt install net-tools
+  apt install net-tools &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
 }
 do_lm_sensors() {
   apt install lm-sensors &&
-  sensors-detect
+  sensors-detect &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
 }
 do_mc() {
-  apt install mc --yes
+  apt install mc --yes &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
@@ -490,6 +490,5 @@ while true; do
   else
     exit 1
   fi
-done 
+done
 }
-
