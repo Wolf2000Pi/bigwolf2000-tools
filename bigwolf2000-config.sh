@@ -298,6 +298,7 @@ do_programme_menu() {
 	"P1 Cockpit                    "    "installieren" \
 	"P2 Net-Tools                  "    "installieren" \
 	"P3 lm-sensors                 "    "installieren" \
+	"P4 MC                     "    "Midnight Commander \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -306,7 +307,8 @@ do_programme_menu() {
     case "$FUN" in
       P1\ *) do_cockpit ;;
 	  P2\ *) do_net_tools ;;
-	  P2\ *) do_lm_sensors ;;
+	  P3\ *) do_lm_sensors ;;
+	  P4\ *) do_mc ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -330,6 +332,12 @@ do_net_tools() {
 do_lm_sensors() {
   apt install lm-sensors &&
   sensors-detect
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_mc() {
+  apt install mc --yes
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
