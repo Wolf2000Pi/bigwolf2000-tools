@@ -475,7 +475,7 @@ do_docker_menu() {
     case "$FUN" in
       D1\ *) do_docker_purge ;;
 	  D2\ *) do_capRover ;;
-	  D3\ *) do_docker_ctop ;;
+	  D3\ *) do_docker_ctop_menu ;;
 	  D4\ *) do_offi_example ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
@@ -493,6 +493,7 @@ do_capRover() {
   sleep 10 &&
   exec bigwolf2000-config
 }
+# Ctop
   do_docker_ctop() {
   echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list &&
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -501,7 +502,39 @@ do_capRover() {
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
+}
+do_mc_menu() {
+  FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+	 "DC1 Installieren  " "" \
+	 "DC2 Deinstallieren" "" \
+	 "DC3 öffnen" "" \
+     3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      DC1\ *) do_docker_ctop ;;
+	  DC2\ *) do_purge_ctop ;;
+	  DC3\ *) do_open_ctop ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "Docker-Ctop ist nicht installiert!                            $FUN" 20 60 1
+  fi
+}
+do_open_ctop() {
+  ctop &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_purge_ctop() {
+  apt -y purge docker-ctop &&
+  rm -r /etc/apt/sources.list.d/azlux.list
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
 }  
+#Onlyofficer  
 do_offi_example() {
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") supervisorctl start ds:example &&
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
