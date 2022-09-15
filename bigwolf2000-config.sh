@@ -403,7 +403,7 @@ do_mc_menu() {
 	  PM2\ *) do_mc_purge ;;
 	  PM3\ *) do_open_mc ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
-    esac || whiptail --msgbox "Midnight Commander ist nicht installiert!         $FUN" 20 60 1
+    esac || whiptail --msgbox "Midnight Commander ist nicht installiert!            $FUN" 20 60 1
   fi
 }
 do_open_mc() {
