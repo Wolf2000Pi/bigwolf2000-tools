@@ -308,7 +308,7 @@ do_programme_menu() {
       P1\ *) do_cockpit_menu ;;
 	  P2\ *) do_net_tools_menu ;;
 	  P3\ *) do_lm_sensors ;;
-	  P4\ *) do_mc ;;
+	  P4\ *) do_mc_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -388,6 +388,36 @@ do_mc() {
   sleep 10 &&
   exec bigwolf2000-config
 }
+do_mc_menu() {
+  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+	 "PI1 Installieren  " "" \
+	 "PI2 Deinstallieren" "" \
+	 "PI3 öffnen" "" \
+     3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      PI1\ *) do_mc ;;
+	  PI2\ *) o_mc_purge ;;
+	  PI3\ *) do_open_mc ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+  fi
+}
+do_open_mc() {
+  mc &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_mc_purge() {
+  apt -y purge mc &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+} 
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
 	"D1 Docker                  "    "Alte Img löschen" \
