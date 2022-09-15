@@ -330,7 +330,7 @@ do_cockpit_menu() {
   fi
 }
 do_cockpit_purge() {
-  apt --purge -y autoremove cockpit &&
+  apt --purge cockpit -y autoremove &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
