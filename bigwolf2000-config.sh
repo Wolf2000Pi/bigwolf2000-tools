@@ -323,8 +323,8 @@ do_cockpit_menu() {
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      Z1\ *) do_net_tools ;;
-	  Z2\ *) do_net_tools_purge ;;
+      Z1\ *) do_cockpit ;;
+	  Z2\ *) do_cockpit_purge ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -363,8 +363,8 @@ do_net_tools_menu() {
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      Y1\ *) do_cockpit ;;
-	  Y2\ *) do_cockpit_purge ;;
+      Y1\ *) do_net_tools ;;
+	  Y2\ *) do_net_tools_purge ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
