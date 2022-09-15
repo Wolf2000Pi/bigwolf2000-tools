@@ -529,7 +529,7 @@ do_open_ctop() {
 }
 do_purge_ctop() {
   apt -y purge docker-ctop &&
-  rm -r /etc/apt/sources.list.d/azlux.list
+  rm -r /etc/apt/sources.list.d/azlux.list &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
