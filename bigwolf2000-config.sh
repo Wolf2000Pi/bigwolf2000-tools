@@ -383,7 +383,7 @@ do_lm_sensors() {
   exec bigwolf2000-config
 }
 do_lm_menu() {
-  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
 	 "PL1 Installieren  " "" \
 	 "PL2 Deinstallieren" "" \
 	 "PL3 Sensors-Detect" "" \
@@ -397,7 +397,7 @@ do_lm_menu() {
 	  PL2\ *) do_lm_purge ;;
 	  PL3\ *) do_open_lm ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
-    esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
+    esac || whiptail --msgbox "Lm-Sensors ist nicht installiert!                      $FUN" 20 60 1
   fi
 }
 do_open_lm() {
