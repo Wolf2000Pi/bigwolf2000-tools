@@ -111,6 +111,7 @@ Es sind keine anderen Symbole, Interpunktionszeichen oder Leerzeichen zulässig.
   fi
 }
 
+#ssh
 do_ssh() {
   if [ -e /var/log/regen_ssh_keys.log ] && ! grep -q "^finished" /var/log/regen_ssh_keys.log; then
     whiptail --msgbox "Initial ssh key generation still running. Please wait and try again." 20 60 2
@@ -196,6 +197,7 @@ EOF
 }
 
 
+# Grund-Menue
 do_Grund_optionen_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
@@ -222,6 +224,7 @@ do_Grund_optionen_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+#tasksel
 do_tasksel() {
   cd /root/
   if tasksel; then
@@ -229,17 +232,20 @@ do_tasksel() {
   fi 
   exec bigwolf2000-config
 }
+#crontab
 do_crontab() {
   cd /root/ &&
   if crontab -e; then
     return 0
   fi 
 }
+#cache löschen
 do_drop_caches() {
   cd /root/ &&
   sync; echo 3 > /proc/sys/vm/drop_caches &&
   exec bigwolf2000-config  
 }
+#Backup
   do_backup() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x backup.sh &&
@@ -247,7 +253,8 @@ do_drop_caches() {
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
-}  
+}
+#Openmediavault
 do_Openmediavault_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
@@ -266,7 +273,7 @@ do_Openmediavault_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
-# test
+# OMV6
 do_omv6() {
 if
   whiptail --yesno "OMV6 Installieren" 20 60 2 \
@@ -293,6 +300,7 @@ apt-get update &&
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&  
 exec bigwolf2000-config
 }
+#Programme
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                    "    "installieren, u.s.w" \
@@ -313,6 +321,7 @@ do_programme_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+#cockpit
 do_cockpit_menu() {
   FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
 	 "PC1 Installieren  " "" \
@@ -347,6 +356,7 @@ do_cockpit() {
   sleep 10 &&
   exec bigwolf2000-config
 }
+#net_tools
 do_net_tools() {
   apt install net-tools &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
@@ -374,7 +384,8 @@ do_net_tools_purge() {
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
-}  
+}
+#lm_sensors  
 do_lm_sensors() {
   apt install lm-sensors &&
   sensors-detect &&
@@ -412,6 +423,7 @@ do_lm_purge() {
   sleep 10 &&
   exec bigwolf2000-config
 }
+#Midnight Commander
 do_mc() {
   apt install mc --yes &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
@@ -447,7 +459,8 @@ do_mc_purge() {
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
-} 
+}
+#Docker
 do_docker_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
 	"D1 Docker                  "    "Alte Img löschen" \
@@ -497,6 +510,7 @@ do_offi_example() {
   exec bigwolf2000-config
 }  
 
+#Advanced
 do_advanced_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
@@ -513,13 +527,14 @@ do_advanced_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+#Reboot
 do_reboot() {
   /sbin/reboot
   printf "Einen Moment ich starte in 1Sek Bigwolf2000-config\n" &&
   sleep 1 &&
   exec bigwolf2000-config
 }
-
+#Update
 do_update() {
   apt update &&
   apt list --upgradable -a &&
@@ -559,7 +574,7 @@ do_deinstall() {
 }
 #
 # Interactive use loop
-#
+# Hauptmenue
 calc_wt_size
 while true; do
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
