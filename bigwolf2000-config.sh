@@ -307,7 +307,7 @@ do_programme_menu() {
     case "$FUN" in
       P1\ *) do_cockpit_menu ;;
 	  P2\ *) do_net_tools_menu ;;
-	  P3\ *) do_lm_sensors ;;
+	  P3\ *) do_lm_menu ;;
 	  P4\ *) do_mc_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
