@@ -305,7 +305,7 @@ do_programme_menu() {
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      P1\ *) do_cockpit ;;
+      P1\ *) do_cockpit_menu ;;
 	  P2\ *) do_net_tools ;;
 	  P3\ *) do_lm_sensors ;;
 	  P4\ *) do_mc ;;
@@ -313,6 +313,30 @@ do_programme_menu() {
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
 }
+do_cockpit_menu() {
+  FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
+	 "Z1 Installieren  " "" \
+	 "Z2 Deinstallieren" "" \
+     3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      Z1\ *) do_cockpit ;;
+	  Z2\ *) do_cockpit_purge ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+  fi
+}
+do_cockpit_purge() {
+  apt --purge -y autoremove cockpit &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}  
+  
+
 do_cockpit() {
   echo "deb http://deb.debian.org/debian bullseye-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list &&
   echo "deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free" | sudo tee -a /etc/apt/sources.list &&
