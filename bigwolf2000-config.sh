@@ -295,10 +295,10 @@ exec bigwolf2000-config
 }
 do_programme_menu() {
   FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.2.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
-	"P1 Cockpit                    "    "installieren" \
-	"P2 Net-Tools                  "    "installieren" \
-	"P3 lm-sensors                 "    "installieren" \
-	"P4 MC                    "    "Midnight Commander" \
+	"P1 Cockpit                    "    "installieren, u.s.w" \
+	"P2 Net-Tools                  "    "installieren, u.s.w" \
+	"P3 lm-sensors                 "    "installieren, u.s.w" \
+	"P4 Midnight Commander         "    "installieren, u.s.w" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
