@@ -315,16 +315,16 @@ do_programme_menu() {
 }
 do_cockpit_menu() {
   FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
-	 "Z1 Installieren  " "" \
-	 "Z2 Deinstallieren" "" \
+	 "PC1 Installieren  " "" \
+	 "PC2 Deinstallieren" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      Z1\ *) do_cockpit ;;
-	  Z2\ *) do_cockpit_purge ;;
+      PC1\ *) do_cockpit ;;
+	  PC2\ *) do_cockpit_purge ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -355,16 +355,16 @@ do_net_tools() {
 }
 do_net_tools_menu() {
   FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
-	 "Y1 Installieren  " "" \
-	 "Y2 Deinstallieren" "" \
+	 "PN1 Installieren  " "" \
+	 "PN2 Deinstallieren" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      Y1\ *) do_net_tools ;;
-	  Y2\ *) do_net_tools_purge ;;
+      PN1\ *) do_net_tools ;;
+	  PN2\ *) do_net_tools_purge ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -378,6 +378,36 @@ do_net_tools_purge() {
 do_lm_sensors() {
   apt install lm-sensors &&
   sensors-detect &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_lm_menu() {
+  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+	 "PL1 Installieren  " "" \
+	 "PL2 Deinstallieren" "" \
+	 "PL3 Sensors-Detect" "" \
+     3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      PL1\ *) do_lm_sensors ;;
+	  PL2\ *) do_lm_purge ;;
+	  PL3\ *) do_open_lm ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
+  fi
+}
+do_open_lm() {
+  sensors-detect &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_lm_purge() {
+  apt -y purge lm-sensors &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
