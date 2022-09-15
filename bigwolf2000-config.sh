@@ -503,7 +503,7 @@ do_capRover() {
   sleep 10 &&
   exec bigwolf2000-config
 }
-do_mc_menu() {
+do_docker_ctop_menu() {
   FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
 	 "DC1 Installieren  " "" \
 	 "DC2 Deinstallieren" "" \
