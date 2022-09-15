@@ -390,18 +390,18 @@ do_mc() {
 }
 do_mc_menu() {
   FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
-	 "PI1 Installieren  " "" \
-	 "PI2 Deinstallieren" "" \
-	 "PI3 öffnen" "" \
+	 "PM1 Installieren  " "" \
+	 "PM2 Deinstallieren" "" \
+	 "PM3 öffnen" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      PI1\ *) do_mc ;;
-	  PI2\ *) o_mc_purge ;;
-	  PI3\ *) do_open_mc ;;
+      PM1\ *) do_mc ;;
+	  PM2\ *) o_mc_purge ;;
+	  PM3\ *) do_open_mc ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
