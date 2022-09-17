@@ -29,6 +29,5 @@ omv-confdbadm populate &&
 apt-get update &&
 sleep 1
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&
-sleep 10
-/sbin/reboot &&
+sleep 10 &&
 bigwolf2000-config
