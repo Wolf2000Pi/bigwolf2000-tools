@@ -17,7 +17,7 @@ if [ "$answer" != "n" ]
  then 
 chmod +x bigwolf2000-config.sh omv-install-6.x.sh deinstall-bigwolf2000-tools.sh &&
 sleep 1
-chmod +x backup.sh
+chmod +x backup.sh offi.sh &&
 sleep 1
 cp deinstall-bigwolf2000-tools.sh /root/ &&
 sleep 1
