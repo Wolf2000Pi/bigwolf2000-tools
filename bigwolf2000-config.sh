@@ -482,7 +482,7 @@ do_docker_menu() {
   fi
 }
 do_docker_purge() {
-  docker system prune -a &&
+  docker system prune -a && && docker image prune && docker volume prune &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
