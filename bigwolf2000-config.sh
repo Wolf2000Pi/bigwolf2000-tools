@@ -307,6 +307,7 @@ do_programme_menu() {
 	"P2 Net-Tools                  "    "installieren, u.s.w" \
 	"P3 lm-sensors                 "    "installieren, u.s.w" \
 	"P4 Midnight Commander         "    "installieren, u.s.w" \
+	"P5 Deborphan             "    "installieren, u.s.w" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -317,6 +318,7 @@ do_programme_menu() {
 	  P2\ *) do_net_tools_menu ;;
 	  P3\ *) do_lm_menu ;;
 	  P4\ *) do_mc_menu ;;
+	  P5\ *) do_debor_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -456,6 +458,43 @@ do_open_mc() {
 }
 do_mc_purge() {
   apt -y purge mc &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+#Deborphan
+do_debor_menu() {
+  FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+	 "PM1 Installieren  " "" \
+	 "PM2 Deinstallieren" "" \
+	 "PM3 öffnen" "" \
+     3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      PM1\ *) do_debor ;;
+	  PM2\ *) do_debor_purge ;;
+	  PM3\ *) do_open_debor ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
+  fi
+}
+o_debor() {
+  apt install deborphan --yes &&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_open_debor() {
+  orphaner&&
+  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
+  sleep 10 &&
+  exec bigwolf2000-config
+}
+do_mc_debor() {
+  apt -y purge deborphan &&
   printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
   sleep 10 &&
   exec bigwolf2000-config
