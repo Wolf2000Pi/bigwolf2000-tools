@@ -465,18 +465,18 @@ do_mc_purge() {
 #Deborphan
 do_debor_menu() {
   FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
-	 "PM1 Installieren  " "" \
-	 "PM2 Deinstallieren" "" \
-	 "PM3 öffnen" "" \
+	 "PD1 Installieren  " "" \
+	 "PD2 Deinstallieren" "" \
+	 "PD3 öffnen" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
     return 0
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
-      PM1\ *) do_debor ;;
-	  PM2\ *) do_debor_purge ;;
-	  PM3\ *) do_open_debor ;;
+      PD1\ *) do_debor ;;
+	  PD2\ *) do_debor_purge ;;
+	  PD3\ *) do_open_debor ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
   fi
