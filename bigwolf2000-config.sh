@@ -229,7 +229,7 @@ do_Grund_optionen_menu() {
 #Sources List
 do_sources() {
   cd /root/
-  sed -i -e's/ main/ main/g' /etc/apt/sources.list &&
+  sed -i -e "s/ main[[:space:]]*\$/ main contrib non-free/" /etc/apt/sources.lis &&
   exec bigwolf2000-config
 }
 #tasksel
