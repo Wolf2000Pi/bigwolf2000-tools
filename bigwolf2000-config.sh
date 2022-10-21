@@ -229,9 +229,7 @@ do_Grund_optionen_menu() {
 #Sources List
 do_sources() {
   cd /root/
-  if sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list; then
-    return 1
-  fi 
+  sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list; then &&
   exec bigwolf2000-config
 }
 #tasksel
