@@ -207,6 +207,7 @@ do_Grund_optionen_menu() {
 	"I5 Backup                      " "Captain OMV-xml root Docker" \
 	"I6 Crontab                     " "Crontab" \
 	"I7 Arbeitsspeiche              " "Bereinigen" \
+	"I8 Sources List                " "contrib non-free zur sources.list hinzufügen" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then		
@@ -220,9 +221,18 @@ do_Grund_optionen_menu() {
 	  I5\ *) do_backup ;;
 	  I6\ *) do_crontab ;;
 	  I7\ *) do_drop_caches ;;
+	  I8\ *) do_sources ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
+}
+#Sources List
+do_sources() {
+  cd /root/
+  if sed -i -e's/ main/ main contrib non-free/g' /etc/apt/sources.list; then
+    return 1
+  fi 
+  exec bigwolf2000-config
 }
 #tasksel
 do_tasksel() {
