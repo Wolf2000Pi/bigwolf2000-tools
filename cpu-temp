@@ -1,6 +1,11 @@
 #!/bin/sh
 #Config für die anzeige Temperatur, Dashboard CPU Temp
 #Bigwolf2000 
+#Intel coretemp-isa-0000
 sensors coretemp-isa-0000 | grep '0:' | head -n4 | cut -c 16-23
+intel (not) coretemp-isa-0000
 #sensors coretemp-isa-0000| grep '0:\|1:\|2:\|3:' | head -n4 | cut -c 16-23 | fmt -w32
+#AMD k10temp-pci-00c3
 #sensors | grep -A3 k10temp | awk '$1 == \"Tctl:\" { print $2 }' | grep -o '[0-9.]\+
+#AMD k10temp-pci-00c3
+#sensors | grep -A3 k10temp | awk '$1 == \"temp1:\" { print $2 }' | grep -o '[0-9.]\+
