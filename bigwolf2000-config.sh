@@ -323,10 +323,11 @@ do_Openmediavault_menu() {
 do_cpuhelp() {
   whiptail --msgbox "\
 Um OMV CPU Temp zu installieren muss vorher 
-Lm-Sensors istalliert und sensors-detect ausgeführt sein sein.
+Lm-Sensors istalliert und sensors-detect ausgeführt sein.
 Führen sie zu erst Config aus zwischen Intel & AMD
 
 " 11 70 1
+do_cputemp_menu
 }
 do_cputemp_conf() {
   cd /root/bigwolf2000-tools/ &&
