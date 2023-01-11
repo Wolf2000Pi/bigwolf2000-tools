@@ -338,7 +338,7 @@ do_cputemp_conf() {
 do_cputemp_install() {
   chmod +x cpu-temp &&
   cp cpu-temp /usr/bin/ &&
-  cd /usr/share/openmediavault/engined/rpc/ &&
+  cd /usr/share/openmediavault/engined/rpc/ &&	
   rm -r cputemp.inc &&
   cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc /usr/share/openmediavault/engined/rpc/ &&
@@ -348,6 +348,7 @@ do_cputemp_install() {
 do_cputemp_deinstall() {
   cd /usr/share/openmediavault/engined/rpc/ &&
   rm -r cputemp.inc &&
+  cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc.bak /usr/share/openmediavault/engined/rpc/cputemp.inc &&
   sleep 3 &&
   exec bigwolf2000-config
