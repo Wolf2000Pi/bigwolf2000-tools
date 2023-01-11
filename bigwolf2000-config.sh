@@ -301,7 +301,7 @@ do_Openmediavault_menu() {
 #CPU Temp OMV
 
   do_cputemp_menu() {
-  FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 12 35 3 --cancel-button Zurück --ok-button Wählen \
      "OT1 Bitte Lesen" "" \
 	 "OT2 Config CPU Temp" "" \
 	 "OT3 Installieren" "" \
@@ -349,6 +349,7 @@ do_cputemp_deinstall() {
   rm -r cputemp.inc &&
   cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc.bak /usr/share/openmediavault/engined/rpc/cputemp.inc &&
+  rm -r /usr/bin/cpu-temp
   exec bigwolf2000-config
 }
 # OMV6
