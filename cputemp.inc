@@ -32,10 +32,10 @@ class OMVRpcServiceCpuTemp extends \OMV\Rpc\ServiceAbstract
     {
         // Validate the RPC caller context.
         $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
-        $cmd = new \OMV\System\Process("cat /sys/devices/virtual/thermal/thermal_zone0/temp");
+        $cmd = new \OMV\System\Process("cpu-temp");
         $cmd->execute($output, $exitStatus);
         return [
-            "cputemp" => intval($output[0]) / 1000
+            "cputemp" => intval($output[0])
         ];
     }
 
