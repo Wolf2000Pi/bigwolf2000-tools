@@ -1,6 +1,6 @@
 #!/bin/sh
 # Part of Wolf2000-Tools https://github.com/Wolf2000Pi/bigwolf2000-tools
-# Version 2.9.0
+# Version 3.0.0
 # by Wolf2000
 do_version() {
 cat /root/bigwolf2000-tools/Version
@@ -199,7 +199,7 @@ EOF
 
 # Grund-Menue
 do_Grund_optionen_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
     "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
@@ -230,14 +230,14 @@ do_Grund_optionen_menu() {
 
 do_open_lm() {
   sensors-detect &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_lm_purge() {
   apt -y purge lm-sensors &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #Sources List
@@ -273,13 +273,13 @@ do_drop_caches() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x backup.sh &&
   ./backup.sh
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #Openmediavault
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins        "     "OMV-Extras" \
 	"O3 omv-firstaid                  "     "Config-Tool für OMV" \
@@ -381,7 +381,7 @@ exec bigwolf2000-config
 }
 #Programme
 do_programme_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
 	"P1 Cockpit                    "    "installieren, u.s.w" \
 	"P2 Net-Tools                  "    "installieren, u.s.w" \
 	"P3 lm-sensors                 "    "installieren, u.s.w" \
@@ -421,8 +421,8 @@ do_cockpit_menu() {
 }
 do_cockpit_purge() {
   apt -y purge cockpit &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }  
   
@@ -433,15 +433,15 @@ do_cockpit() {
   apt update &&
   apt install cockpit cockpit-bridge cockpit-networkmanager cockpit-packagekit cockpit-pcp cockpit-podman cockpit-storaged cockpit-system cockpit-ws &&
   systemctl enable --now cockpit.socket &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #net_tools
 do_net_tools() {
   apt install net-tools &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_net_tools_menu() {
@@ -462,16 +462,16 @@ do_net_tools_menu() {
 }
 do_net_tools_purge() {
   apt -y purge net-tools &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #lm_sensors  
 do_lm_sensors() {
   apt install lm-sensors &&
   sensors-detect &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_lm_menu() {
@@ -494,21 +494,21 @@ do_lm_menu() {
 }
 do_open_lm() {
   sensors-detect &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_lm_purge() {
   apt -y purge lm-sensors &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #Midnight Commander
 do_mc() {
   apt install mc --yes &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_mc_menu() {
@@ -531,14 +531,14 @@ do_mc_menu() {
 }
 do_open_mc() {
   mc &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_mc_purge() {
   apt -y purge mc &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #Deborphan
@@ -562,25 +562,25 @@ do_debor_menu() {
 }
 o_debor() {
   apt install deborphan --yes &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_open_debor() {
   orphaner&&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_mc_debor() {
   apt -y purge deborphan &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 #Docker
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
 	"D1 Docker                  "    "Alte Img löschen" \
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
@@ -602,14 +602,14 @@ do_docker_menu() {
 do_docker_purge() {
   docker system prune -a && docker image prune && 
 #  docker volume prune &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }  
 do_capRover() {
   docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 # Ctop
@@ -618,8 +618,8 @@ do_capRover() {
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
   apt update &&
   apt install docker-ctop &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_docker_ctop_menu() {
@@ -642,29 +642,29 @@ do_docker_ctop_menu() {
 }
 do_open_ctop() {
   ctop &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }
 do_purge_ctop() {
   apt -y purge docker-ctop &&
   rm -r /etc/apt/sources.list.d/azlux.list &&
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }  
 #Onlyofficer  
 do_offi_example() {
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") supervisorctl start ds:example &&
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
-  printf "Einen Moment ich starte in 10Sek Bigwolf2000-config\n" &&
-  sleep 10 &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
   exec bigwolf2000-config
 }  
 
 #Advanced
 do_advanced_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
@@ -729,7 +729,7 @@ do_deinstall() {
 # Hauptmenue
 calc_wt_size
 while true; do
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 2.9.0" --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Setup Options"  $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Beenden --ok-button Wählen \
     "1 Docker                    " "Löschen, usw." \
 	"2 Change User Password      " "Root Password ändern" \
     "3 Grund-optionen            " "Sprache-Zeit-Tastatur Tasksel Backup " \
