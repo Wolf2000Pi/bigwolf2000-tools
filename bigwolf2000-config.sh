@@ -332,13 +332,13 @@ do_cputemp_menu
 do_cputemp_conf() {
   cd /root/bigwolf2000-tools/ &&
   nano cpu-temp &&
-  chmod +x cpu-temp &&
-  cp cpu-temp /usr/bin/
   sleep 3 &&
   exec bigwolf2000-config
 }
 do_cputemp_install() {
-  cd /usr/share/openmediavault/engined/rpc/
+  chmod +x cpu-temp &&
+  cp cpu-temp /usr/bin/ &&
+  cd /usr/share/openmediavault/engined/rpc/ &&
   rm -r cputemp.inc &&
   cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc /usr/share/openmediavault/engined/rpc/ &&
