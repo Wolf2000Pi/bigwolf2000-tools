@@ -327,12 +327,12 @@ Lm-Sensors istalliert und sensors-detect ausgeführt sein.
 Führen sie zu erst Config aus zwischen Intel & AMD
 
 " 11 70 1
+do_cputemp_menu
 }
 do_cputemp_conf() {
   cd /root/bigwolf2000-tools/ &&
   nano cpu-temp &&
-  sleep 3 &&
-  exec bigwolf2000-config
+  do_cputemp_menu
 }
 do_cputemp_install() {
   chmod +x cpu-temp &&
