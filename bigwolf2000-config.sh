@@ -317,7 +317,7 @@ do_Openmediavault_menu() {
 	  OT3\ *) do_cputemp_install ;;
 	  OT4\ *) do_cputemp_deinstall ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
-    esac || whiptail --msgbox "Lm-Sensors ist nicht installiert!                      $FUN" 20 60 1
+    esac || whiptail --msgbox "CPU Temp OMV!                      $FUN" 20 60 1
   fi
 }
 do_cpuhelp() {
@@ -335,13 +335,13 @@ do_cputemp_conf() {
   do_cputemp_menu
 }
 do_cputemp_install() {
+  cd /root/bigwolf2000-tools/ &&
   chmod +x cpu-temp &&
   cp cpu-temp /usr/bin/ &&
   cd /usr/share/openmediavault/engined/rpc/ &&	
   rm -r cputemp.inc &&
   cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc /usr/share/openmediavault/engined/rpc/ &&
-  sleep 3 &&
   exec bigwolf2000-config
 }
 do_cputemp_deinstall() {
@@ -349,7 +349,6 @@ do_cputemp_deinstall() {
   rm -r cputemp.inc &&
   cd /root/bigwolf2000-tools/ &&
   cp cputemp.inc.bak /usr/share/openmediavault/engined/rpc/cputemp.inc &&
-  sleep 3 &&
   exec bigwolf2000-config
 }
 # OMV6
