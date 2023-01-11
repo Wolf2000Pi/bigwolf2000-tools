@@ -303,9 +303,9 @@ do_Openmediavault_menu() {
   do_cputemp_menu() {
   FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
      "OT1 Bitte Lesen" "" \
-	 "OT1 Config CPU Temp" "" \
-	 "OT2 Installieren" "" \
-	 "OI3 Deinstallieren" "" \
+	 "OT2 Config CPU Temp" "" \
+	 "OT3 Installieren" "" \
+	 "OT4 Deinstallieren" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -327,7 +327,6 @@ Lm-Sensors istalliert und sensors-detect ausgeführt sein.
 Führen sie zu erst Config aus zwischen Intel & AMD
 
 " 11 70 1
-do_cputemp_menu
 }
 do_cputemp_conf() {
   cd /root/bigwolf2000-tools/ &&
