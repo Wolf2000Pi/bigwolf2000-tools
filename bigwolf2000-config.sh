@@ -301,7 +301,7 @@ do_Openmediavault_menu() {
 #CPU Temp OMV
 
   do_cputemp_menu() {
-  FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 14 35 4 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 10 35 4 --cancel-button Zurück --ok-button Wählen \
      "OT1 Bitte Lesen" "" \
 	 "OT2 Config CPU Temp" "" \
 	 "OT3 Installieren" "" \
