@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (C) 2022 OpenMediaVault Plugin Developers
+ * Copyright (C) 2022-2023 OpenMediaVault Plugin Developers
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,10 +32,17 @@ class OMVRpcServiceCpuTemp extends \OMV\Rpc\ServiceAbstract
     {
         // Validate the RPC caller context.
         $this->validateMethodContext($context, ["role" => OMV_ROLE_ADMINISTRATOR]);
-        $cmd = new \OMV\System\Process("cpu-temp");
+        // get cpu temp command and divisor number
+        $cpuTemp = \OMV\Environment::get("OMV_CPU_TEMP_COMMAND",
+          "cpu-temp");
+        $cpuDivisor = \OMV\Environment::get("OMV_CPU_TEMP_DIVISOR", "1000");
+        if ($cpuDivisor == 0) {
+            $cpuDivisor = 1;
+        }
+        $cmd = new \OMV\System\Process($cpuTemp);
         $cmd->execute($output, $exitStatus);
         return [
-            "cputemp" => intval($output[0])
+            "cputemp" => intval($output[0]) / $cpuDivisor
         ];
     }
 
