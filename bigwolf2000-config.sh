@@ -333,8 +333,8 @@ Lm-Sensors istalliert und sensors-detect ausgeführt sein.
 do_cputemp_menu
 }
 do_cputemp_conf() {
-  cd /root/bigwolf2000-tools/ &&
-  nano cpu-temp &&
+  cd /root/ &&
+  nano /usr/sbin/cpu-temp &&
   do_cputemp_menu
 }
 do_cputemp_install() {
