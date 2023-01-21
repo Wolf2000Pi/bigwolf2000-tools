@@ -268,7 +268,8 @@ do_drop_caches() {
   sync; echo 3 > /proc/sys/vm/drop_caches &&
   exec bigwolf2000-config  
 }
-#Backup
+#
+Backup
   do_backup() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x backup.sh &&
@@ -358,11 +359,12 @@ fi
   sleep 1 &&
   monit restart omv-engined &&
   sleep 1 &&
-  exec bigwolf2000-config
+  do_cputemp_menu
 }
 do_cputemp_deinstall() {
-  rm -r /usr/sbin/cpu-temp
-  exec bigwolf2000-config
+  apt purge openmediavault-cputemp &&
+  rm -r /usr/sbin/cpu-temp &&
+  do_cputemp_menu
 }
 # OMV6
 do_omv6() {
@@ -379,17 +381,19 @@ if
   else
     return $RET
   fi
+  do_Openmediavault_menu
  } 
 do_omv_firstaid() {
   cd /root/
   if omv-firstaid; then	
     return 0
-  fi 
+  fi
+   do_Openmediavault_menu 
 }
 do_omv_plugins() {
 apt-get update &&
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&  
-exec bigwolf2000-config
+do_cputemp_menu
 }
 #Programme
 do_programme_menu() {
