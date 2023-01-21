@@ -339,11 +339,7 @@ do_cputemp_install() {
   chmod +x cpu-temp &&
   cp cpu-temp /usr/sbin/ &&
   sudo omv-env set "OMV_CPU_TEMP_COMMAND" "/usr/sbin/cpu-temp" &&
-  DIVISOR=$(whiptail --inputbox "Please enter a DIVISOR" 20 60 "$CURRENT_HOSTNAME" 3>&1 1>&2 2>&3)
-  if [ $? -eq 0 ]; then
-    echo $DIVISOR > sudo omv-env set "OMV_CPU_TEMP_DIVISOR" "$DIVISOR"
-  fi
-  &&
+  sudo omv-env set "OMV_CPU_TEMP_DIVISOR" "whiptail --title "Create DIVISOR" --inputbox "DIVISOR" 8 40 0" 
   exec bigwolf2000-config
 }
 do_cputemp_deinstall() {
