@@ -320,6 +320,7 @@ do_Openmediavault_menu() {
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "CPU Temp OMV!                      $FUN" 20 60 1
   fi
+  do_Openmediavault_menu
 }
 do_cpuhelp() {
   whiptail --msgbox "\
