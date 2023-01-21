@@ -336,16 +336,16 @@ do_cputemp_conf() {
 }
 do_cputemp_install() {
   cd /root/bigwolf2000-tools/ &&
-  chmod +x cpu-temp &&
   cp cpu-temp /usr/sbin/ &&
+  chmod +x /usr/sbin/cpu-temp &&
   cd /root/ &&
-  omv-env set "OMV_CPU_TEMP_COMMAND" "/usr/sbin/cpu-temp" &&
+  sudo omv-env set "OMV_CPU_TEMP_COMMAND" "/usr/sbin/cpu-temp" &&
   DIVISOR=$(whiptail --inputbox "Set DIVISOR" 8 39 0 --title "DIVISOR Config" 3>&1 1>&2 2>&3)
 # Ein Trick, um stdout und stderr auszutauschen.
 # Auch hier können Sie dies in if packen, aber für einige Benutzer von 80-Spalten-Terminals scheint es #wirklich lang zu sein.
 DIVISOR=$?
 if [ $? -eq 0 ]; then
-    omv-env set "OMV_CPU_TEMP_DIVISOR" "$DIVISOR"
+    sudo omv-env set "OMV_CPU_TEMP_DIVISOR" "$DIVISOR"
 else
     echo "User selected Cancel."
 fi
