@@ -386,7 +386,8 @@ if
 do_omv_firstaid() {
   cd /root/
   if omv-firstaid; then	
-    return do_Openmediavault_menu
+    return 0
+	do_Openmediavault_menu
   fi 
 }
 do_omv_plugins() {
