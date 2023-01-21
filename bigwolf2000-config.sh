@@ -386,14 +386,13 @@ if
 do_omv_firstaid() {
   cd /root/
   if omv-firstaid; then	
-    return 0
-  fi
-   do_Openmediavault_menu 
+    return do_Openmediavault_menu
+  fi 
 }
 do_omv_plugins() {
 apt-get update &&
 wget -O - https://github.com/OpenMediaVault-Plugin-Developers/packages/raw/master/install | bash &&  
-do_cputemp_menu
+do_Openmediavault_menu
 }
 #Programme
 do_programme_menu() {
