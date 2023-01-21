@@ -337,11 +337,13 @@ do_cputemp_conf() {
 do_cputemp_install() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x cpu-temp &&
-  cp cpu-temp /usr/bin/ &&
-  cd /usr/share/openmediavault/engined/rpc/ &&	
-  rm -r cputemp.inc &&
-  cd /root/bigwolf2000-tools/ &&
-  cp cputemp.inc /usr/share/openmediavault/engined/rpc/ &&
+  cp cpu-temp /usr/sbin/ &&
+  sudo omv-env set "OMV_CPU_TEMP_COMMAND" "/usr/sbin/cpu-temp" &&
+  DIVISOR=$(whiptail --inputbox "Please enter a DIVISOR" 20 60 "$CURRENT_HOSTNAME" 3>&1 1>&2 2>&3)
+  if [ $? -eq 0 ]; then
+    echo $DIVISOR > sudo omv-env set "OMV_CPU_TEMP_DIVISOR" "$DIVISOR"
+  fi
+  &&
   exec bigwolf2000-config
 }
 do_cputemp_deinstall() {
