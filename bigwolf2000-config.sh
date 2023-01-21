@@ -302,9 +302,9 @@ do_Openmediavault_menu() {
 
   do_cputemp_menu() {
   FUN=$(whiptail --title "CPU Temp OMV" --menu "Bitte wählen sie aus" 11 35 4 --cancel-button Zurück --ok-button Wählen \
-     "OT1 Bitte Lesen" "" \
-	 "OT2 Config CPU Temp" "" \
-	 "OT3 Installieren" "" \
+     "OT1 Bitte Lesen" "" \	 
+	 "OT2 Installieren" "" \
+	 "OT3 Config CPU Temp" "" \
 	 "OT4 Deinstallieren" "" \
      3>&1 1>&2 2>&3)
   RET=$?
@@ -313,8 +313,8 @@ do_Openmediavault_menu() {
   elif [ $RET -eq 0 ]; then
     case "$FUN" in
 	  OT1\ *) do_cpuhelp ;;
-      OT2\ *) do_cputemp_conf ;;
-	  OT3\ *) do_cputemp_install ;;
+      OT2\ *) do_cputemp_install ;;
+	  OT3\ *) do_cputemp_conf ;;
 	  OT4\ *) do_cputemp_deinstall ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "CPU Temp OMV!                      $FUN" 20 60 1
@@ -323,8 +323,10 @@ do_Openmediavault_menu() {
 do_cpuhelp() {
   whiptail --msgbox "\
 Um OMV CPU Temp zu installieren muss vorher 
+openmediavault-cputemp 6.1.2
 Lm-Sensors istalliert und sensors-detect ausgeführt sein.
-Führen sie zu erst Config aus zwischen Intel & AMD
+1. Installieren
+2. Config aus zwischen Intel & AMD
 
 " 11 70 1
 do_cputemp_menu
@@ -359,11 +361,7 @@ fi
   exec bigwolf2000-config
 }
 do_cputemp_deinstall() {
-  cd /usr/share/openmediavault/engined/rpc/ &&
-  rm -r cputemp.inc &&
-  cd /root/bigwolf2000-tools/ &&
-  cp cputemp.inc.bak /usr/share/openmediavault/engined/rpc/cputemp.inc &&
-  rm -r /usr/bin/cpu-temp
+  rm -r /usr/sbin/cpu-temp
   exec bigwolf2000-config
 }
 # OMV6
