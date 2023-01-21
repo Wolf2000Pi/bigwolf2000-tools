@@ -423,7 +423,7 @@ do_programme_menu() {
 }
 #cockpit
 do_cockpit_menu() {
-  FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Hauptmenü --ok-button Wählen \
 	 "PC1 Installieren  " "" \
 	 "PC2 Deinstallieren" "" \
      3>&1 1>&2 2>&3)
@@ -442,7 +442,7 @@ do_cockpit_purge() {
   apt -y purge cockpit &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_cockpit_menu
 }  
   
 
@@ -454,14 +454,14 @@ do_cockpit() {
   systemctl enable --now cockpit.socket &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_cockpit_menu
 }
 #net_tools
 do_net_tools() {
   apt install net-tools &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_cockpit_menu
 }
 do_net_tools_menu() {
   FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
@@ -483,7 +483,7 @@ do_net_tools_purge() {
   apt -y purge net-tools &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_net_tools_menu
 }
 #lm_sensors  
 do_lm_sensors() {
@@ -491,7 +491,7 @@ do_lm_sensors() {
   sensors-detect &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_net_tools_menu
 }
 do_lm_menu() {
   FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
@@ -515,13 +515,13 @@ do_open_lm() {
   sensors-detect &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_lm_menu
 }
 do_lm_purge() {
   apt -y purge lm-sensors &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_lm_menu
 }
 #Midnight Commander
 do_mc() {
@@ -552,13 +552,13 @@ do_open_mc() {
   mc &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_mc
 }
 do_mc_purge() {
   apt -y purge mc &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_mc
 }
 #Deborphan
 do_debor_menu() {
@@ -583,19 +583,19 @@ o_debor() {
   apt install deborphan --yes &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_debor_menu
 }
 do_open_debor() {
   orphaner&&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_debor_menu
 }
 do_mc_debor() {
   apt -y purge deborphan &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_debor_menu
 }
 #Docker
 do_docker_menu() {
@@ -623,13 +623,13 @@ do_docker_purge() {
 #  docker volume prune &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_menu
 }  
 do_capRover() {
   docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_menu
 }
 # Ctop
   do_docker_ctop() {
@@ -639,7 +639,7 @@ do_capRover() {
   apt install docker-ctop &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_ctop_menu
 }
 do_docker_ctop_menu() {
   FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
@@ -663,14 +663,14 @@ do_open_ctop() {
   ctop &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_ctop_menu
 }
 do_purge_ctop() {
   apt -y purge docker-ctop &&
   rm -r /etc/apt/sources.list.d/azlux.list &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_ctop_menu
 }  
 #Onlyofficer  
 do_offi_example() {
@@ -678,7 +678,7 @@ do_offi_example() {
   docker exec $(docker ps -l -q --filter "name=srv-captain--offi.1") sed 's,autostart=false,autostart=true,' -i /etc/supervisor/conf.d/ds-example.conf
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_docker_menu
 }  
 
 #Advanced
