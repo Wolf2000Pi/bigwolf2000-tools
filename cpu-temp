@@ -6,7 +6,7 @@
 sensors coretemp-isa-0000 | grep '0:' | head -n4 | cut -c 16-23
 #intel (not) coretemp-isa-0000
 #sensors coretemp-isa-0000| grep '0:\|1:\|2:\|3:' | head -n4 | cut -c 16-23 | fmt -w32
-#AMD k10temp-pci-00c3 - Tctl
-#sensors | grep -A3 k10temp | awk '$1 == \"Tctl:\" { print $2 }' | grep -o '[0-9.]\+
-#AMD k10temp-pci-00c3 - temp1
-#sensors | grep -A3 k10temp | awk '$1 == \"temp1:\" { print $2 }' | grep -o '[0-9.]\+
+#AMD k10temp-pci-00c3 - Tctl - DIVISOR 10
+#sensors | grep -A3 k10temp | awk '$1 == "Tctl:" { print $2 }' | grep -o '[0-9.]\+' | sed 's/\.//'
+#AMD k10temp-pci-00c3 - temp1 - DIVISOR 10
+#sensors | grep -A3 k10temp | awk '$1 == "temp1:" { print $2 }' | grep -o '[0-9.]\+' | sed 's/\.//'
