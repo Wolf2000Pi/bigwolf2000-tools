@@ -307,6 +307,7 @@ do_Openmediavault_menu() {
 	 "OT2 Installieren" "" \
 	 "OT3 Config CPU Temp" "" \
 	 "OT4 Deinstallieren" "" \
+	 "OT5 Openmediavault Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -317,9 +318,10 @@ do_Openmediavault_menu() {
       OT2\ *) do_cputemp_install ;;
 	  OT3\ *) do_cputemp_conf ;;
 	  OT4\ *) do_cputemp_deinstall ;;
+	  OT5\ *) do_Openmediavault_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "CPU Temp OMV!                      $FUN" 20 60 1
-    do_Openmediavault_menu
+    
   fi
 }
 do_cpuhelp() {
