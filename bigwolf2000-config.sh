@@ -319,8 +319,8 @@ do_Openmediavault_menu() {
 	  OT4\ *) do_cputemp_deinstall ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "CPU Temp OMV!                      $FUN" 20 60 1
+    do_Openmediavault_menu
   fi
-  do_Openmediavault_menu
 }
 do_cpuhelp() {
   whiptail --msgbox "\
