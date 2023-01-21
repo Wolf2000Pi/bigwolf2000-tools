@@ -338,6 +338,7 @@ do_cputemp_install() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x cpu-temp &&
   cp cpu-temp /usr/sbin/ &&
+  cd /root/ &&
   omv-env set "OMV_CPU_TEMP_COMMAND" "/usr/sbin/cpu-temp" &&
   DIVISOR=$(whiptail --inputbox "Set DIVISOR" 8 39 0 --title "DIVISOR Config" 3>&1 1>&2 2>&3)
 # Ein Trick, um stdout und stderr auszutauschen.
@@ -348,9 +349,13 @@ if [ $? -eq 0 ]; then
 else
     echo "User selected Cancel."
 fi
+  sleep 1 &&  
   omv-salt stage run prepare &&
+  sleep 1 &&
   omv-mkworkbench all &&
+  sleep 1 &&
   monit restart omv-engined &&
+  sleep 1 &&
   exec bigwolf2000-config
 }
 do_cputemp_deinstall() {
