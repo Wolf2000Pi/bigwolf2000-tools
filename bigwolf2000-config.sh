@@ -259,9 +259,9 @@ do_tasksel() {
 do_crontab() {
   cd /root/ &&
   if crontab -e; then
-    return 1
-  fi 
-  do_Grund_optionen_menu
+    return 0
+	do_Grund_optionen_menu
+  fi   
 }
 #cache löschen
 do_drop_caches() {
