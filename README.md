@@ -3,6 +3,7 @@
 Das Bigwolf2000-tools ist ein Tool für die wichtigsten Einstellung für den Server.
 Es gibt auch eine Möglichkeit: 
 Openmediavault zu installieren das bis auf ein paar fragen selbstständig installiert.
+Für fragen https://blog.wolf2000.at/
 
 Abhängigkeiten: 
 ``` 
