@@ -467,7 +467,7 @@ do_net_tools() {
   do_cockpit_menu
 }
 do_net_tools_menu() {
-  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 12 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 12 35 3 --cancel-button Hauptmenu --ok-button Wählen \
 	 "PN1 Installieren  " "" \
 	 "PN2 Deinstallieren" "" \
 	 "PN3 Prog. Menu" "" \
@@ -499,7 +499,7 @@ do_lm_sensors() {
   do_net_tools_menu
 }
 do_lm_menu() {
-  FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "PL1 Installieren  " "" \
 	 "PL2 Deinstallieren" "" \
 	 "PL3 Sensors-Detect" "" \
@@ -538,7 +538,7 @@ do_mc() {
   exec bigwolf2000-config
 }
 do_mc_menu() {
-  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "PM1 Installieren  " "" \
 	 "PM2 Deinstallieren" "" \
 	 "PM3 öffnen" "" \
@@ -585,6 +585,7 @@ do_debor_menu() {
       PD1\ *) do_debor ;;
 	  PD2\ *) do_debor_purge ;;
 	  PD3\ *) do_open_debor ;;
+	  PD3\ *) do_programme_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
   fi
@@ -695,7 +696,7 @@ do_offi_example() {
 
 #Advanced
 do_advanced_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Advanced Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Hauptmenu \
     "A1 Hostname         " "Setzen Sie den sichtbaren Namen im Netzwerk" \
     "A2 SSH              " "Enable/Disable ein/aus um sich mit dem Putty zu verbinden zu können" \
 	3>&1 1>&2 2>&3)
