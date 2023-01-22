@@ -259,7 +259,7 @@ do_tasksel() {
 do_crontab() {
   cd /root/ &&
   if crontab -e; then
-    return 0
+    return 1
   fi 
   do_Grund_optionen_menu
 }
