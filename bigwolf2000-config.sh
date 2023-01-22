@@ -232,20 +232,20 @@ do_open_lm() {
   sensors-detect &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_Grund_optionen_menu
 }
 do_lm_purge() {
   apt -y purge lm-sensors &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_Grund_optionen_menu
 }
 #Sources List
 do_sources() {
   cd /root/
   sed -i -e "s/ main[[:space:]]*\$/ main contrib non-free/" /etc/apt/sources.list &&
   
-  exec bigwolf2000-config
+  do_Grund_optionen_menu
 }
 #tasksel
 do_tasksel() {
@@ -253,7 +253,7 @@ do_tasksel() {
   if tasksel; then
     return 1
   fi 
-  exec bigwolf2000-config
+  do_Grund_optionen_menu
 }
 #crontab
 do_crontab() {
@@ -266,7 +266,7 @@ do_crontab() {
 do_drop_caches() {
   cd /root/ &&
   sync; echo 3 > /proc/sys/vm/drop_caches &&
-  exec bigwolf2000-config  
+  do_Grund_optionen_menu  
 }
 #
 Backup
@@ -276,7 +276,7 @@ Backup
   ./backup.sh
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
-  exec bigwolf2000-config
+  do_Grund_optionen_menu
 }
 #Openmediavault
 do_Openmediavault_menu() {
