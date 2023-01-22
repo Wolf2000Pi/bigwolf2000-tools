@@ -199,7 +199,7 @@ EOF
 
 # Grund-Menue
 do_Grund_optionen_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Grund-optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Hauptmenü --ok-button Wählen \
     "I1 Change Locale               " "Wo bist Du zu Hause" \
     "I2 Change Timezone             " "Meine Uhr geht nach der Wiener Wasserleitungen" \
     "I3 Change Keyboard Layout      " "Tastatur-Einstellungen" \
@@ -281,7 +281,7 @@ Backup
 }
 #Openmediavault
 do_Openmediavault_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Openmediavault Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Hauptmenu --ok-button Wählen \
 	"O1 Openmediavault Version 6      "     "Installation Unter Debian bullseye" \
     "O2 Openmediavault Plugins        "     "OMV-Extras" \
 	"O3 omv-firstaid                  "     "Config-Tool für OMV" \
@@ -401,7 +401,7 @@ do_Openmediavault_menu
 }
 #Programme
 do_programme_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Programme installieren" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Hauptmenu --ok-button Wählen \
 	"P1 Cockpit                    "    "installieren, u.s.w" \
 	"P2 Net-Tools                  "    "installieren, u.s.w" \
 	"P3 lm-sensors                 "    "installieren, u.s.w" \
@@ -427,6 +427,7 @@ do_cockpit_menu() {
   FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Hauptmenü --ok-button Wählen \
 	 "PC1 Installieren  " "" \
 	 "PC2 Deinstallieren" "" \
+	 "PC3 Prog. Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -435,6 +436,7 @@ do_cockpit_menu() {
     case "$FUN" in
       PC1\ *) do_cockpit ;;
 	  PC2\ *) do_cockpit_purge ;;
+	  PC3\ *) do_programme_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -468,6 +470,7 @@ do_net_tools_menu() {
   FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
 	 "PN1 Installieren  " "" \
 	 "PN2 Deinstallieren" "" \
+	 "PN3 Prog. Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -476,6 +479,7 @@ do_net_tools_menu() {
     case "$FUN" in
       PN1\ *) do_net_tools ;;
 	  PN2\ *) do_net_tools_purge ;;
+	  PN3\ *) do_programme_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -499,6 +503,7 @@ do_lm_menu() {
 	 "PL1 Installieren  " "" \
 	 "PL2 Deinstallieren" "" \
 	 "PL3 Sensors-Detect" "" \
+	 "PL4 Prog. Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -508,6 +513,7 @@ do_lm_menu() {
       PL1\ *) do_lm_sensors ;;
 	  PL2\ *) do_lm_purge ;;
 	  PL3\ *) do_open_lm ;;
+	  PL4\ *) do_programme_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "Lm-Sensors ist nicht installiert!                      $FUN" 20 60 1
   fi
@@ -536,6 +542,7 @@ do_mc_menu() {
 	 "PM1 Installieren  " "" \
 	 "PM2 Deinstallieren" "" \
 	 "PM3 öffnen" "" \
+	 "PM4 Prog. Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -545,6 +552,7 @@ do_mc_menu() {
       PM1\ *) do_mc ;;
 	  PM2\ *) do_mc_purge ;;
 	  PM3\ *) do_open_mc ;;
+	  PM4\ *) do_programme_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "Midnight Commander ist nicht installiert!                      $FUN" 20 60 1
   fi
@@ -563,10 +571,11 @@ do_mc_purge() {
 }
 #Deborphan
 do_debor_menu() {
-  FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Hauptmenu --ok-button Wählen \
 	 "PD1 Installieren  " "" \
 	 "PD2 Deinstallieren" "" \
 	 "PD3 öffnen" "" \
+	 "PD4 Prog. Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -600,7 +609,7 @@ do_mc_debor() {
 }
 #Docker
 do_docker_menu() {
-  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Zurück \
+  FUN=$(whiptail --title "Server Software Configuration Tool Bigwolf2000 Version 3.0.0" --menu "Docker Optionen" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Hauptmenu \
 	"D1 Docker                  "    "Alte Img löschen" \
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
@@ -643,10 +652,11 @@ do_capRover() {
   do_docker_ctop_menu
 }
 do_docker_ctop_menu() {
-  FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Hauptmenu --ok-button Wählen \
 	 "DC1 Installieren  " "" \
 	 "DC2 Deinstallieren" "" \
 	 "DC3 öffnen" "" \
+	 "DC4 Docker Menu" "" \
      3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -656,6 +666,7 @@ do_docker_ctop_menu() {
       DC1\ *) do_docker_ctop ;;
 	  DC2\ *) do_purge_ctop ;;
 	  DC3\ *) do_open_ctop ;;
+	  DC4\ *) do_docker_menu ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "Docker-Ctop ist nicht installiert!                            $FUN" 20 60 1
   fi
