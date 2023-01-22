@@ -467,7 +467,7 @@ do_net_tools() {
   do_cockpit_menu
 }
 do_net_tools_menu() {
-  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 11 35 3 --cancel-button Zurück --ok-button Wählen \
 	 "PN1 Installieren  " "" \
 	 "PN2 Deinstallieren" "" \
 	 "PN3 Prog. Menu" "" \
@@ -499,7 +499,7 @@ do_lm_sensors() {
   do_net_tools_menu
 }
 do_lm_menu() {
-  FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Lm-Sensors" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Zurück --ok-button Wählen \
 	 "PL1 Installieren  " "" \
 	 "PL2 Deinstallieren" "" \
 	 "PL3 Sensors-Detect" "" \
@@ -538,7 +538,7 @@ do_mc() {
   exec bigwolf2000-config
 }
 do_mc_menu() {
-  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Midnight Commander" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Zurück --ok-button Wählen \
 	 "PM1 Installieren  " "" \
 	 "PM2 Deinstallieren" "" \
 	 "PM3 öffnen" "" \
@@ -571,7 +571,7 @@ do_mc_purge() {
 }
 #Deborphan
 do_debor_menu() {
-  FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 10 35 3 --cancel-button Hauptmenu --ok-button Wählen \
+  FUN=$(whiptail --title "Deborphan" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "PD1 Installieren  " "" \
 	 "PD2 Deinstallieren" "" \
 	 "PD3 öffnen" "" \
