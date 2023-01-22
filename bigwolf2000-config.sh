@@ -261,6 +261,7 @@ do_crontab() {
   if crontab -e; then
     return 0
   fi 
+  do_Grund_optionen_menu
 }
 #cache löschen
 do_drop_caches() {
