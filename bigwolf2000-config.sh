@@ -652,7 +652,7 @@ do_capRover() {
   do_docker_ctop_menu
 }
 do_docker_ctop_menu() {
-  FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 10 35 4 --cancel-button Hauptmenu --ok-button Wählen \
+  FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "DC1 Installieren  " "" \
 	 "DC2 Deinstallieren" "" \
 	 "DC3 öffnen" "" \
