@@ -424,7 +424,7 @@ do_programme_menu() {
 }
 #cockpit
 do_cockpit_menu() {
-  FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 9 40 2 --cancel-button Hauptmenü --ok-button Wählen \
+  FUN=$(whiptail --title "Cockpit" --menu "Bitte wählen sie aus" 12 35 3 --cancel-button Hauptmenü --ok-button Wählen \
 	 "PC1 Installieren  " "" \
 	 "PC2 Deinstallieren" "" \
 	 "PC3 Prog. Menu" "" \
@@ -467,7 +467,7 @@ do_net_tools() {
   do_cockpit_menu
 }
 do_net_tools_menu() {
-  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 11 35 3 --cancel-button Zurück --ok-button Wählen \
+  FUN=$(whiptail --title "Net-Tools" --menu "Bitte wählen sie aus" 12 35 3 --cancel-button Zurück --ok-button Wählen \
 	 "PN1 Installieren  " "" \
 	 "PN2 Deinstallieren" "" \
 	 "PN3 Prog. Menu" "" \
