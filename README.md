@@ -51,6 +51,8 @@ For more information: https://caprover.com/docs/get-started.html
 
 [![paypal](https://www.paypalobjects.com/de_DE/AT/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=MDV3LUKEPG9KN)
 
+![QR-Code (2)](https://user-images.githubusercontent.com/17816568/215238137-f22eb705-d96b-4ee8-b278-2fbb89313ff0.png)
+
 ![tool1](https://user-images.githubusercontent.com/17816568/188281200-8337102b-3a96-400e-9cec-7989e609445f.JPG)
 
 ![tool2](https://user-images.githubusercontent.com/17816568/188281411-edc64f9c-e172-49a6-9c0f-ab2812dbef89.JPG)
@@ -58,5 +60,6 @@ For more information: https://caprover.com/docs/get-started.html
 ![tool3](https://user-images.githubusercontent.com/17816568/188281412-c7f8eb3c-0900-4b5d-aa3d-6f6b620b9bb9.JPG)
 
 ![tool4](https://user-images.githubusercontent.com/17816568/188281413-5a932493-acca-4247-ab96-bbf1b28c1a06.JPG)
+
 
 
