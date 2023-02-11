@@ -5,6 +5,10 @@ Es gibt auch eine Möglichkeit:
 Openmediavault zu installieren das bis auf ein paar fragen selbstständig installiert.
 Für fragen https://blog.wolf2000.at/
 
+**Achtung** es gibt keinen Support über das Forum Openmediavault von diesem Tool.
+
+**Warning** there is no support from the Openmediavault forum for this tool
+
 Abhängigkeiten: 
 ``` 
 apt install wget git whiptail
