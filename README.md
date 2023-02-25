@@ -28,7 +28,7 @@ cd && git clone https://github.com/Wolf2000Pi/bigwolf2000-tools.git && cd bigwol
 ```
 or
 ```
-wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
+wget -O - https://raw.githubusercontent.com/Wolf2000Pi/bigwolf2000-tools/V3.1.0/install | bash
 ```
 
 Sollte das Tool nicht mehr funktionieren oder fehlermeldungen haben füren sie ./deinstall-bigwolf2000-tools.sh aus und installieren sie es neu.
@@ -41,7 +41,7 @@ If the tool stops working or you get error messages, please select ./deinstall-b
 Bei Debian Net Installer ---- At Debian NetInstaller.
 
 ```
-apt install wget git whiptail && wget -O - https://github.com/Wolf2000Pi/bigwolf2000-tools/raw/main/install | bash
+apt install wget git whiptail && wget -O - https://raw.githubusercontent.com/Wolf2000Pi/bigwolf2000-tools/V3.1.0/install | bash
 ```
 Für weiter fragen zur Openmediavault: https://forum.openmediavault.org
 
