@@ -271,7 +271,7 @@ do_drop_caches() {
 }
 #
 #Backup
-  do_backup() {
+ do_backup() {
   cd /root/bigwolf2000-tools/ &&
   chmod +x backup.sh &&
   ./backup.sh
@@ -616,6 +616,7 @@ do_docker_menu() {
 	"D2 CapRover                "    "CapRover Installation" \
 	"D3 Docker ctop             "    "Docker-ctop installation" \
 	"D4 ONLYOFFICE Example      "    "ONLYOFFICE Example reaktivieren" \
+	"D5 Portainer      "    "Portainer reaktivieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -626,6 +627,7 @@ do_docker_menu() {
 	  D2\ *) do_capRover ;;
 	  D3\ *) do_docker_ctop_menu ;;
 	  D4\ *) do_offi_example ;;
+	  D5\ *) do_portainer ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -653,6 +655,14 @@ do_capRover() {
   sleep 3 &&
   do_docker_ctop_menu
 }
+# Portainer
+  do_portainer() {
+  docker pull portainer/portainer-ce:latest &&
+  docker-compose up -d &&
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
+  do_docker_menu
+}  
 do_docker_ctop_menu() {
   FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "DC1 Installieren  " "" \
