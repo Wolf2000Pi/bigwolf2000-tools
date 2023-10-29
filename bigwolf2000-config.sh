@@ -493,7 +493,7 @@ do_net_tools_purge() {
 }
 #lm_sensors  
 do_lm_sensors() {
-  apt install lm-sensors &&
+  apt install lm-sensors --yes &&
   sensors-detect &&
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
