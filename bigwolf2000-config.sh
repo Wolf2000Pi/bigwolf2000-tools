@@ -617,6 +617,7 @@ do_docker_menu() {
 	"D3 Docker ctop             "    "Docker-ctop installation" \
 	"D4 ONLYOFFICE Example      "    "ONLYOFFICE Example reaktivieren" \
 	"D5 Portainer      "    "Portainer reaktivieren" \
+	"D6 AppArmor      "    "AppArmor deaktivieren" \
     3>&1 1>&2 2>&3)
   RET=$?
   if [ $RET -eq 1 ]; then
@@ -628,6 +629,7 @@ do_docker_menu() {
 	  D3\ *) do_docker_ctop_menu ;;
 	  D4\ *) do_offi_example ;;
 	  D5\ *) do_portainer ;;
+	  D6\ *) do_apparmor ;;
       *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
     esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
   fi
@@ -662,7 +664,18 @@ do_capRover() {
   printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
   sleep 3 &&
   do_docker_menu
-}  
+}
+#AppArmor
+  do_apparmor() {
+  mkdir -p /etc/default/grub.d &&
+  echo 'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT apparmor=0"' | sudo tee /etc/default/grub.d/apparmor.cfg &&
+  update-grub &&
+  reboot
+  printf "Einen Moment ich starte in 3Sek Bigwolf2000-config\n" &&
+  sleep 3 &&
+  do_docker_menu
+}
+  
 do_docker_ctop_menu() {
   FUN=$(whiptail --title "Docker-Ctop" --menu "Bitte wählen sie aus" 12 35 4 --cancel-button Hauptmenu --ok-button Wählen \
 	 "DC1 Installieren  " "" \
